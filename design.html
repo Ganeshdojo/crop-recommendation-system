@@ -1,0 +1,4294 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgroPredicta - AI-Powered Crop Prediction</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Roboto+Mono&family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Roboto+Mono:wght@400;500&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: "#2de370",
+                dark: "#2de370",
+                light: "#1d9b48",
+              },
+              secondary: {
+                DEFAULT: "#1a1a1a",
+                dark: "#1a1a1a",
+                light: "#f0f0f0",
+              },
+              dark: "#121212",
+              light: "#ffffff",
+            },
+            fontFamily: {
+              montserrat: ["Montserrat", "sans-serif"],
+              opensans: ["Open Sans", "sans-serif"],
+              mono: ["Roboto Mono", "monospace"],
+              merriweather: ["Merriweather", "serif"],
+            },
+          },
+        },
+      };
+
+      // Control page visibility
+      document.addEventListener("DOMContentLoaded", function () {
+        // Replace the current How It Works section with the alternating timeline version
+        // updateHowItWorksSection();
+
+        // Initially show only home page
+        showPage("home");
+
+        // Add scrolling effect to navbar
+        window.addEventListener("scroll", function () {
+          const navbar = document.getElementById("navbar");
+          if (window.scrollY > 10) {
+            navbar.classList.add("backdrop-blur-md");
+            navbar.classList.add("dark:bg-dark/80", "bg-white/80");
+            navbar.classList.remove("dark:bg-transparent", "bg-transparent");
+          } else {
+            navbar.classList.remove("backdrop-blur-md");
+            navbar.classList.remove("dark:bg-dark/80", "bg-white/80");
+            navbar.classList.add("dark:bg-transparent", "bg-transparent");
+          }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.classList.remove("dark");
+          updateThemeIcon(false);
+        } else {
+          document.documentElement.classList.add("dark");
+          updateThemeIcon(true);
+        }
+      });
+
+      function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll(".page").forEach((page) => {
+          page.classList.add("hidden");
+        });
+
+        // Show selected page
+        document.getElementById(pageId + "Page").classList.remove("hidden");
+
+        // Update active state in navigation
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.classList.remove(
+            "dark:text-primary-dark",
+            "text-primary-light",
+            "font-semibold"
+          );
+          link.classList.add("dark:text-gray-300", "text-gray-700");
+        });
+
+        const activeLink = document.querySelector(
+          `.nav-link[data-page="${pageId}"]`
+        );
+        if (activeLink) {
+          activeLink.classList.remove("dark:text-gray-300", "text-gray-700");
+          activeLink.classList.add(
+            "dark:text-primary-dark",
+            "text-primary-light",
+            "font-semibold"
+          );
+        }
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+
+      function toggleTheme() {
+        if (document.documentElement.classList.contains("dark")) {
+          document.documentElement.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+          updateThemeIcon(false);
+        } else {
+          document.documentElement.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+          updateThemeIcon(true);
+        }
+      }
+
+      function updateThemeIcon(isDark) {
+        const themeToggle = document.getElementById("themeToggle");
+        if (isDark) {
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+      }
+
+      // Connect sliders with input fields
+      document.addEventListener('DOMContentLoaded', function() {
+          // Pair each slider with its corresponding input
+          const pairs = [
+            { slider: 'nitrogenSlider', input: 'nitrogenInput' },
+            { slider: 'phosphorusSlider', input: 'phosphorusInput' },
+            { slider: 'potassiumSlider', input: 'potassiumInput' },
+            { slider: 'phSlider', input: 'phInput' },
+            { slider: 'temperatureSlider', input: 'temperatureInput' },
+            { slider: 'rainfallSlider', input: 'rainfallInput' },
+            { slider: 'humiditySlider', input: 'humidityInput' }
+          ];
+      
+          // Set up two-way binding for each pair
+          pairs.forEach(pair => {
+            const slider = document.getElementById(pair.slider);
+            const input = document.getElementById(pair.input);
+            
+            // Update input when slider changes
+            slider.addEventListener('input', function() {
+              input.value = this.value;
+              updateSoilProfile();
+            });
+            
+            // Update slider when input changes
+            input.addEventListener('change', function() {
+              slider.value = this.value;
+              updateSoilProfile();
+            });
+          });
+      
+          // Location button functionality
+          const locationBtn = document.getElementById('locationBtn');
+          const locationDisplay = document.getElementById('locationDisplay');
+          const locationStatus = document.getElementById('locationStatus');
+          const autoFillNotice = document.getElementById('autoFillNotice');
+          
+          locationBtn.addEventListener('click', function() {
+            // Check if geolocation is available
+            if (navigator.geolocation) {
+              // Show loading state
+              locationStatus.classList.remove('hidden');
+              locationBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Locating...';
+              
+              // Get current position
+              navigator.geolocation.getCurrentPosition(
+                // Success callback
+                function(position) {
+                  const lat = position.coords.latitude.toFixed(4);
+                  const lon = position.coords.longitude.toFixed(4);
+                  
+                  // Update location display
+                  locationDisplay.textContent = `Latitude: ${lat}, Longitude: ${lon}`;
+                  
+                  // Show success state
+                  locationBtn.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Location Found';
+                  locationBtn.classList.remove('bg-gradient-to-r', 'from-primary-dark', 'to-primary-dark/80');
+                  locationBtn.classList.add('bg-green-600');
+                  
+                  // Simulate auto-filling weather data
+                  autoFillNotice.classList.remove('hidden');
+                  
+                  // This would normally come from an API based on coordinates
+                  document.getElementById('temperatureInput').value = 22;
+                  document.getElementById('temperatureSlider').value = 22;
+                  document.getElementById('rainfallInput').value = 110;
+                  document.getElementById('rainfallSlider').value = 110;
+                  document.getElementById('humidityInput').value = 70;
+                  document.getElementById('humiditySlider').value = 70;
+                  
+                  updateSoilProfile();
+                  
+                  // Hide loading indicator
+                  locationStatus.classList.add('hidden');
+                },
+                // Error callback
+                function(error) {
+                  locationDisplay.textContent = `Error: ${error.message}`;
+                  locationBtn.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Location Failed';
+                  locationBtn.classList.remove('bg-gradient-to-r', 'from-primary-dark', 'to-primary-dark/80');
+                  locationBtn.classList.add('bg-red-600');
+                  locationStatus.classList.add('hidden');
+                }
+              );
+            } else {
+              locationDisplay.textContent = "Geolocation is not supported by this browser.";
+            }
+          });
+          
+          // Initial update for soil profile
+          updateSoilProfile();
+        });
+        
+        // Function to update the soil profile visualization
+        function updateSoilProfile() {
+          // Get current values
+          const n = parseInt(document.getElementById('nitrogenInput').value) / 150; // Normalize to 0-1
+          const p = parseInt(document.getElementById('phosphorusInput').value) / 100;
+          const k = parseInt(document.getElementById('potassiumInput').value) / 120;
+          const ph = parseFloat(document.getElementById('phInput').value) / 14;
+          const org = 0.6; // This would normally be an input as well
+          
+          // Calculate coordinates for the pentagon (simplified)
+          const centerX = 100;
+          const centerY = 100;
+          const radius = 100;
+          
+          // Calculate points for each axis
+          const nPoint = { x: centerX, y: centerY - radius * n };
+          const pPoint = { x: centerX + radius * p * 0.95, y: centerY - radius * p * 0.3 };
+          const kPoint = { x: centerX + radius * k * 0.6, y: centerY + radius * k * 0.8 };
+          const phPoint = { x: centerX - radius * ph * 0.6, y: centerY + radius * ph * 0.8 };
+          const orgPoint = { x: centerX - radius * org * 0.95, y: centerY - radius * org * 0.3 };
+          
+          // Update polygon
+          const polygon = document.getElementById('soilProfilePolygon');
+          polygon.setAttribute('points', `${nPoint.x},${nPoint.y} ${pPoint.x},${pPoint.y} ${kPoint.x},${kPoint.y} ${phPoint.x},${phPoint.y} ${orgPoint.x},${orgPoint.y}`);
+        }
+
+        // Crop Recommendations Database
+const cropRecommendations = {
+  "wheat": [
+    {category: "spacing", icon: "ruler", title: "Optimal Spacing", content: "Plant wheat in rows that are 16-20 cm apart for optimal yield"},
+    {category: "fertilizer", icon: "flask", title: "Fertilization Strategy", content: "Apply nitrogen fertilizer during the vegetative growth stage"},
+    {category: "disease", icon: "bug", title: "Disease Management", content: "Monitor for rust and fungal diseases, especially in humid conditions"},
+    {category: "harvest", icon: "tractor", title: "Harvest Timing", content: "Harvest when grain moisture content is around 12-14%"}
+  ],
+  "barley": [
+    {category: "spacing", icon: "ruler", title: "Row Spacing", content: "Plant barley with 15-18 cm between rows for best results"},
+    {category: "fertilizer", icon: "flask", title: "Nutrient Requirements", content: "Barley needs less nitrogen than wheat; apply in split doses to prevent lodging"},
+    {category: "disease", icon: "bug", title: "Disease Prevention", content: "Watch for powdery mildew and implement preventive fungicide applications"},
+    {category: "harvest", icon: "tractor", title: "Harvesting Guide", content: "Harvest when grain moisture is between 13-15% for optimal quality"}
+  ],
+  "oats": [
+    {category: "spacing", icon: "ruler", title: "Planting Density", content: "Sow oats at 80-100 kg/ha with 17-19 cm between rows"},
+    {category: "fertilizer", icon: "flask", title: "Fertilization Plan", content: "Apply phosphorus and potassium before planting; nitrogen in early growth stages"},
+    {category: "disease", icon: "bug", title: "Pest Management", content: "Control crown rust with resistant varieties and fungicide applications"},
+    {category: "harvest", icon: "tractor", title: "Harvesting Best Practices", content: "Harvest when grain moisture content reaches 12-14%"}
+  ],
+  "maize": [
+    {category: "spacing", icon: "ruler", title: "Plant Spacing", content: "Plant maize with 75 cm between rows and 20-25 cm between plants"},
+    {category: "fertilizer", icon: "flask", title: "Nutrient Management", content: "Apply nitrogen in three splits: at planting, knee-high stage, and tasseling"},
+    {category: "disease", icon: "bug", title: "Disease Control", content: "Monitor for corn ear rot and leaf blights, especially in wet conditions"},
+    {category: "water", icon: "tint", title: "Irrigation Needs", content: "Ensure adequate soil moisture during the critical tasseling to grain filling period"}
+  ],
+  "rice": [
+    {category: "spacing", icon: "ruler", title: "Transplanting Spacing", content: "Transplant rice seedlings at 20×15 cm spacing for optimal tillering"},
+    {category: "water", icon: "tint", title: "Water Management", content: "Maintain 5-7 cm water depth during the vegetative to reproductive stage"},
+    {category: "fertilizer", icon: "flask", title: "Fertilization Protocol", content: "Apply potassium during panicle initiation for improved grain filling"},
+    {category: "harvest", icon: "tractor", title: "Harvest Guidelines", content: "Harvest when 80-85% of the grains turn golden yellow"}
+  ],
+  "cotton": [
+    {category: "spacing", icon: "ruler", title: "Row Configuration", content: "Plant cotton in rows 90-100 cm apart with 15-20 cm between plants"},
+    {category: "fertilizer", icon: "flask", title: "Nutrient Requirements", content: "Apply phosphorus at planting and nitrogen during square formation"},
+    {category: "pest", icon: "bug", title: "Pest Control", content: "Implement IPM strategies to control bollworms and sucking pests"},
+    {category: "harvest", icon: "cut", title: "Harvesting Strategy", content: "Begin harvesting when 60% of bolls are open for maximum fiber quality"}
+  ]
+};
+
+// Default recommendations if crop not found
+const defaultRecommendations = [
+  {category: "general", icon: "seedling", title: "Soil Preparation", content: "Ensure proper soil testing and preparation before planting"},
+  {category: "general", icon: "cloud-rain", title: "Water Management", content: "Maintain appropriate soil moisture throughout the growing season"},
+  {category: "general", icon: "bug", title: "Pest Monitoring", content: "Regularly check crops for signs of pests and diseases"},
+  {category: "general", icon: "sun", title: "Weather Adaptation", content: "Adjust growing practices based on seasonal weather conditions"}
+];
+
+// Function to load recommendations based on predicted crop
+function loadCropRecommendations(cropName) {
+  const recommendationsContainer = document.getElementById('cropRecommendations');
+  
+  // Default to lowercase for matching
+  cropName = cropName.toLowerCase();
+  
+  // Get recommendations for the specific crop, or use defaults if not found
+  const recommendations = cropRecommendations[cropName] || defaultRecommendations;
+  
+  // Clear loading indicator
+  recommendationsContainer.innerHTML = '';
+  
+  // Create the recommendations list
+  const recommendationsList = document.createElement('ul');
+  recommendationsList.className = 'space-y-4';
+  
+  // Add each recommendation
+  recommendations.forEach(rec => {
+    const li = document.createElement('li');
+    li.className = 'flex items-start p-3 rounded-lg dark:bg-dark/50 bg-white/50 hover:shadow-md transition-all transform hover:-translate-y-1 duration-300';
+    li.innerHTML = `
+      <div class="rounded-full bg-primary-dark/20 p-2 mr-3 flex-shrink-0">
+        <i class="fas fa-${rec.icon} text-primary-dark"></i>
+      </div>
+      <div>
+        <h5 class="font-semibold text-sm mb-1">${rec.title}</h5>
+        <span>${rec.content}</span>
+      </div>
+    `;
+    recommendationsList.appendChild(li);
+  });
+  
+  recommendationsContainer.appendChild(recommendationsList);
+}
+
+// Function to initialize the results page including recommendations
+function initializeResultsPage(cropName) {
+  // other result page initialization code...
+  
+  // Load recommendations for the predicted crop
+  loadCropRecommendations(cropName);
+  
+  // You could also update other elements on the page based on the crop
+  document.querySelector('.text-3xl.font-montserrat.font-bold.text-white').textContent = cropName;
+  
+  // Update the page title to include the crop name
+  document.title = `AgroPredicta - ${cropName} Prediction Results`;
+}
+
+// Call this when the result page is shown
+document.addEventListener('DOMContentLoaded', function() {
+  // Example: When the result page is loaded, get the crop from the page
+  // This could be adapted to your application's state management
+  if (document.getElementById('resultPage') && !document.getElementById('resultPage').classList.contains('hidden')) {
+    // Get the crop name from the heading or from your app state
+    const cropNameElement = document.querySelector('.text-3xl.font-montserrat.font-bold.text-white');
+    const cropName = cropNameElement ? cropNameElement.textContent.trim() : 'wheat';
+    
+    // Initialize the result page with the crop name
+    initializeResultsPage(cropName);
+  }
+  
+  // If you're using the showPage function to navigate
+  const originalShowPage = window.showPage;
+  window.showPage = function(pageId) {
+    originalShowPage(pageId);
+    
+    if (pageId === 'result') {
+      // Get the predicted crop from your application state
+      const predictedCrop = state.predictedCrop || 'wheat';
+      initializeResultsPage(predictedCrop);
+    }
+  };
+});
+
+    </script>
+    <style>
+      body {
+        scroll-behavior: smooth;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .data-text, 
+  .numeric-value, 
+  .percentage, 
+  .metrics, 
+  .measurement {
+    font-family: "Roboto Mono", monospace;
+  }
+  
+  blockquote,
+  .quote,
+  .education-content,
+  .tip-content,
+  .insight {
+    font-family: "Merriweather", serif;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-primary {
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(45, 227, 112, 0.3);
+      }
+
+      .zoom-on-hover:hover {
+        transform: scale(1.03);
+        transition: transform 0.3s ease;
+      }
+
+      /* Timeline style */
+      .timeline-container {
+        position: relative;
+      }
+
+      /* Animation for page transitions */
+      .page {
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Progress bar animation */
+      @keyframes progressAnimation {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      .animate-progress {
+        animation: progressAnimation 1.5s ease-out forwards;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #1a1a1a;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #2de370;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #25ba5c;
+      }
+
+      /* Glass effect for cards */
+      .glass-effect {
+        background: rgba(26, 26, 26, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+
+      .light .glass-effect {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Progress bars */
+      .progress-bar {
+        position: relative;
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .soil-card {
+        transition: all 0.3s ease;
+      }
+
+      .soil-card:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Chart styling */
+      .chart-container {
+        position: relative;
+        width: 100%;
+        height: 300px;
+      }
+
+      /* Radar chart specific styling */
+      .radar-chart {
+        --size: 250px;
+        width: var(--size);
+        height: var(--size);
+        position: relative;
+        margin: 0 auto;
+      }
+
+      .radar-chart-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(45, 227, 112, 0.1) 0%,
+          rgba(45, 227, 112, 0.05) 70%
+        );
+      }
+
+      .radar-chart-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      .radar-chart-area {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80%;
+        clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        background: rgba(45, 227, 112, 0.4);
+        border: 2px solid rgba(45, 227, 112, 0.8);
+      }
+
+      .radar-chart-dot {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background-color: #2de370;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Training visualization animation */
+      @keyframes trainProgress {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      .train-progress {
+        animation: trainProgress 3s ease-in-out;
+      }
+
+      /* Spinner animation for loading */
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .spinner {
+        animation: spin 1s linear infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="dark:bg-dark dark:text-white bg-light text-gray-800 min-h-screen overflow-x-hidden"
+  >
+    <!-- Navbar -->
+    <nav
+      id="navbar"
+      class="fixed w-full z-50 transition-all duration-300 dark:bg-transparent bg-transparent"
+    >
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <a
+            href="#"
+            onclick="showPage('home'); return false;"
+            class="flex items-center"
+          >
+            <span
+              class="dark:text-primary-dark text-primary-light font-montserrat font-bold text-xl"
+              >Agro<span class="dark:text-white text-gray-800"
+                >Predicta</span
+              ></span
+            >
+          </a>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#"
+              onclick="showPage('home'); return false;"
+              class="nav-link dark:text-primary-dark text-primary-light font-semibold"
+              data-page="home"
+              >Home</a
+            >
+            <a
+              href="#"
+              onclick="showPage('training'); return false;"
+              class="nav-link dark:text-gray-300 text-gray-700 hover:dark:text-primary-dark hover:text-primary-light transition-colors"
+              data-page="training"
+              >Training</a
+            >
+            <a
+              href="#"
+              onclick="showPage('prediction'); return false;"
+              class="nav-link dark:text-gray-300 text-gray-700 hover:dark:text-primary-dark hover:text-primary-light transition-colors"
+              data-page="prediction"
+              >Testing</a
+            >
+            <a
+              href="#"
+              onclick="showPage('dashboard'); return false;"
+              class="nav-link dark:text-gray-300 text-gray-700 hover:dark:text-primary-dark hover:text-primary-light transition-colors"
+              data-page="dashboard"
+              >Dashboard</a
+            >
+            <!-- For example, add this inside the navbar items: -->
+            <a
+              href="#"
+              onclick="showPage('settings'); return false;"
+              class="nav-link dark:text-gray-300 text-gray-700 hover:dark:text-primary-dark hover:text-primary-light transition-colors"
+              data-page="settings"
+              >Settings</a
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <button
+              id="themeToggle"
+              onclick="toggleTheme()"
+              class="dark:text-gray-300 text-gray-700 hover:dark:text-primary-dark hover:text-primary-light p-2 rounded-full transition-colors"
+            >
+              <i class="fas fa-sun"></i>
+            </button>
+            <button
+              onclick="showPage('login'); return false;"
+              class="hidden md:block dark:text-gray-300 text-gray-700 hover:dark:text-primary-dark hover:text-primary-light transition-colors"
+            >
+              Login
+            </button>
+            <button
+              onclick="showPage('register'); return false;"
+              class="hidden md:block dark:bg-primary-dark bg-primary-light hover:dark:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-2 px-4 rounded-full transition-all btn-primary"
+            >
+              Sign Up
+            </button>
+            <button
+              class="md:hidden dark:text-gray-300 text-gray-700 hover:dark:text-primary-dark hover:text-primary-light p-2"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home Page -->
+    <section id="homePage" class="page min-h-screen">
+      <!-- Hero Section -->
+      <div class="pt-24 pb-12 md:py-32 relative">
+        <div
+          class="container mx-auto px-6 grid md:grid-cols-2 gap-8 items-center"
+        >
+          <div>
+            <h1 class="text-4xl md:text-5xl font-montserrat font-bold mb-4">
+              <span class="dark:text-primary-dark text-primary-light"
+                >AI-Powered</span
+              >
+              Crop Prediction for Smart Farming
+            </h1>
+            <p class="dark:text-gray-300 text-gray-600 mb-8">
+              Optimize your agricultural decisions with machine learning. Get
+              accurate crop recommendations based on soil conditions and
+              environmental factors.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <button
+                onclick="showPage('prediction'); return false;"
+                class="dark:bg-primary-dark bg-primary-light hover:dark:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-3 px-6 rounded-full transition-all btn-primary"
+              >
+                Try Prediction <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+              <button
+                onclick="showPage('training'); return false;"
+                class="dark:border dark:border-gray-600 border border-gray-300 hover:dark:border-primary-dark hover:border-primary-light dark:text-white text-gray-800 hover:dark:text-primary-dark hover:text-primary-light font-medium py-3 px-6 rounded-full transition-colors"
+              >
+                Train Model <i class="fas fa-robot ml-2"></i>
+              </button>
+            </div>
+          </div>
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3"
+              alt="Farm field at sunset"
+              class="rounded-lg shadow-lg w-full"
+            />
+
+            <!-- Soil Analysis Overlay Cards -->
+            <div
+              class="absolute top-4 right-4 glass-effect p-4 rounded-xl w-64"
+            >
+              <div class="flex justify-between items-center mb-3">
+                <h3 class="font-semibold dark:text-blue-300 text-blue-600">
+                  Soil Analysis
+                </h3>
+                <span class="text-sm dark:text-primary-dark text-primary-light"
+                  >Live Data</span
+                >
+              </div>
+
+              <!-- Nitrogen -->
+              <div class="mb-3">
+                <div class="flex justify-between mb-1">
+                  <span class="dark:text-blue-200 text-blue-500">Nitrogen</span>
+                  <span>75%</span>
+                </div>
+                <div class="progress-bar dark:bg-gray-700 bg-gray-300">
+                  <div
+                    class="bg-green-500 h-full animate-progress"
+                    style="width: 75%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Phosphorus -->
+              <div class="mb-3">
+                <div class="flex justify-between mb-1">
+                  <span class="dark:text-blue-200 text-blue-500"
+                    >Phosphorus</span
+                  >
+                  <span>50%</span>
+                </div>
+                <div class="progress-bar dark:bg-gray-700 bg-gray-300">
+                  <div
+                    class="bg-yellow-500 h-full animate-progress"
+                    style="width: 50%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Potassium -->
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="dark:text-blue-200 text-blue-500"
+                    >Potassium</span
+                  >
+                  <span>80%</span>
+                </div>
+                <div class="progress-bar dark:bg-gray-700 bg-gray-300">
+                  <div
+                    class="bg-cyan-500 h-full animate-progress"
+                    style="width: 80%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recommendation Card -->
+            <div
+              class="absolute bottom-4 left-4 glass-effect p-4 rounded-xl w-64"
+            >
+              <div class="flex items-center gap-3 mb-2">
+                <div
+                  class="w-10 h-10 rounded-full bg-green-700 flex items-center justify-center"
+                >
+                  <i class="fas fa-seedling text-white"></i>
+                </div>
+                <div>
+                  <h3 class="font-semibold">Top Recommendation</h3>
+                  <p class="text-sm dark:text-gray-400 text-gray-600">
+                    Based on your conditions
+                  </p>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <h2 class="text-2xl font-bold dark:text-blue-200 text-blue-700">
+                  Wheat
+                </h2>
+                <span class="text-primary-dark">92% match</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="py-16 dark:bg-secondary-dark bg-secondary-light">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-montserrat font-bold mb-4">
+              Powerful Features for Smart Agriculture
+            </h2>
+            <p class="dark:text-gray-300 text-gray-600 max-w-2xl mx-auto">
+              Leverage advanced machine learning capabilities to make
+              data-driven decisions for your farming needs.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div
+              class="dark:bg-dark/50 bg-white p-6 rounded-xl feature-card transition-all duration-300 soil-card"
+            >
+              <div
+                class="dark:text-primary-dark text-primary-light text-3xl mb-4"
+              >
+                <i class="fas fa-microchip"></i>
+              </div>
+              <h3 class="text-xl font-montserrat font-semibold mb-3">
+                Multiple ML Models
+              </h3>
+              <p class="dark:text-gray-400 text-gray-600">
+                Choose from Decision Tree and XGBoost
+                algorithms for optimal predictions.
+              </p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div
+              class="dark:bg-dark/50 bg-white p-6 rounded-xl feature-card transition-all duration-300 soil-card"
+            >
+              <div
+                class="dark:text-primary-dark text-primary-light text-3xl mb-4"
+              >
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3 class="text-xl font-montserrat font-semibold mb-3">
+                Real-time Analysis
+              </h3>
+              <p class="dark:text-gray-400 text-gray-600">
+                Monitor training progress and model performance metrics in
+                real-time.
+              </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div
+              class="dark:bg-dark/50 bg-white p-6 rounded-xl feature-card transition-all duration-300 soil-card"
+            >
+              <div
+                class="dark:text-primary-dark text-primary-light text-3xl mb-4"
+              >
+                <i class="fas fa-database"></i>
+              </div>
+              <h3 class="text-xl font-montserrat font-semibold mb-3">
+                Custom Training
+              </h3>
+              <p class="dark:text-gray-400 text-gray-600">
+                Train models with your own dataset to improve prediction
+                accuracy.
+              </p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div
+              class="dark:bg-dark/50 bg-white p-6 rounded-xl feature-card transition-all duration-300 soil-card"
+            >
+              <div
+                class="dark:text-primary-dark text-primary-light text-3xl mb-4"
+              >
+                <i class="fas fa-cloud-sun-rain"></i>
+              </div>
+              <h3 class="text-xl font-montserrat font-semibold mb-3">
+                Environmental Factors
+              </h3>
+              <p class="dark:text-gray-400 text-gray-600">
+                Consider rainfall, temperature, and humidity for precise
+                recommendations.
+              </p>
+            </div>
+
+            <!-- Feature 5 -->
+            <div
+              class="dark:bg-dark/50 bg-white p-6 rounded-xl feature-card transition-all duration-300 soil-card"
+            >
+              <div
+                class="dark:text-primary-dark text-primary-light text-3xl mb-4"
+              >
+                <i class="fas fa-seedling"></i>
+              </div>
+              <h3 class="text-xl font-montserrat font-semibold mb-3">
+                Soil Analysis
+              </h3>
+              <p class="dark:text-gray-400 text-gray-600">
+                Input soil parameters like NPK values and pH for comprehensive
+                assessment.
+              </p>
+            </div>
+
+            <!-- Weather Integration -->
+            <div
+              class="dark:bg-dark/50 bg-white p-6 rounded-xl feature-card transition-all duration-300 soil-card"
+            >
+              <div
+                class="dark:text-primary-dark text-primary-light text-3xl mb-4"
+              >
+                <i class="fas fa-cloud-sun"></i>
+              </div>
+              <h3 class="text-xl font-montserrat font-semibold mb-3">
+                Weather Integration
+              </h3>
+              <p class="dark:text-gray-400 text-gray-600">
+                Connect to real-time weather APIs for accurate forecasting and
+                intelligent recommendations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How It Works Section -->
+      <div class="py-20" id="howItWorksSection">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-16 animate-on-scroll">
+            <div
+              class="inline-block px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-medium mb-4"
+            >
+              Simple Process
+            </div>
+            <h2 class="text-3xl md:text-4xl font-montserrat font-bold mb-4">
+              How AgroPredicta Works
+            </h2>
+            <p class="dark:text-gray-300 text-gray-600 max-w-2xl mx-auto">
+              Our AI-powered platform simplifies crop prediction while
+              delivering powerful insights for your farm.
+            </p>
+          </div>
+
+          <!-- Timeline Container -->
+          <div class="relative animate-on-scroll">
+            <!-- Central Timeline Line -->
+            <div
+              class="absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-primary-light to-blue-500 transform -translate-x-1/2 z-0"
+            ></div>
+
+            <!-- Step 1 -->
+            <div
+              class="flex flex-col md:flex-row items-center mb-20 relative z-10"
+            >
+              <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                <div class="mb-4">
+                  <span
+                    class="dark:bg-dark-800 bg-white dark:text-primary-dark text-primary-light px-3 py-1 rounded-full text-sm font-bold"
+                    >Step 1</span
+                  >
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Input Parameters</h3>
+                <p class="dark:text-gray-300 text-gray-600">
+                  Enter soil composition (NPK values), environmental factors
+                  (temperature, humidity, rainfall), and pH level. For
+                  convenience, you can use geolocation to automatically fetch
+                  weather data.
+                </p>
+              </div>
+              <div
+                class="rounded-full bg-primary-dark z-10 w-14 h-14 flex items-center justify-center shadow-lg border-4 border-dark-950 dark:border-gray-100"
+              >
+                <i class="fas fa-flask text-black text-xl"></i>
+              </div>
+              <div class="md:w-1/2 md:pl-12 hidden md:block">
+                <img
+                  src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3"
+                  alt="Soil Testing"
+                  class="rounded-lg shadow-lg w-full h-64 object-cover"
+                />
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div
+              class="flex flex-col md:flex-row-reverse items-center mb-20 relative z-10"
+            >
+              <div class="md:w-1/2 md:pl-12 md:text-left mb-6 md:mb-0">
+                <div class="mb-4">
+                  <span
+                    class="dark:bg-dark-800 bg-white dark:text-primary-dark text-primary-light px-3 py-1 rounded-full text-sm font-bold"
+                    >Step 2</span
+                  >
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Model Selection</h3>
+                <p class="dark:text-gray-300 text-gray-600">
+                  Choose from multiple machine learning models like Random
+                  Forest and XGBoost, or train your own custom model with
+                  specific datasets for your region and soil type.
+                </p>
+              </div>
+              <div
+                class="rounded-full bg-primary-dark z-10 w-14 h-14 flex items-center justify-center shadow-lg border-4 border-dark-950 dark:border-gray-100"
+              >
+                <i class="fas fa-microchip text-black text-xl"></i>
+              </div>
+              <div class="md:w-1/2 md:pr-12 hidden md:block">
+                <img
+                  src="https://images.unsplash.com/photo-1580584126903-c17d41830450?ixlib=rb-4.0.3"
+                  alt="AI Processing"
+                  class="rounded-lg shadow-lg w-full h-64 object-cover"
+                />
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div
+              class="flex flex-col md:flex-row items-center mb-20 relative z-10"
+            >
+              <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                <div class="mb-4">
+                  <span
+                    class="dark:bg-dark-800 bg-white dark:text-primary-dark text-primary-light px-3 py-1 rounded-full text-sm font-bold"
+                    >Step 3</span
+                  >
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Process Data</h3>
+                <p class="dark:text-gray-300 text-gray-600">
+                  Our AI algorithms analyze your inputs against historical data
+                  and current conditions to make intelligent predictions based
+                  on complex patterns and relationships.
+                </p>
+              </div>
+              <div
+                class="rounded-full bg-primary-dark z-10 w-14 h-14 flex items-center justify-center shadow-lg border-4 border-dark-950 dark:border-gray-100"
+              >
+                <i class="fas fa-seedling text-black text-xl"></i>
+              </div>
+              <div class="md:w-1/2 md:pl-12 hidden md:block">
+                <img
+                  src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?ixlib=rb-4.0.3"
+                  alt="Crop Recommendations"
+                  class="rounded-lg shadow-lg w-full h-64 object-cover"
+                />
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div
+              class="flex flex-col md:flex-row-reverse items-center relative z-10"
+            >
+              <div class="md:w-1/2 md:pl-12 md:text-left mb-6 md:mb-0">
+                <div class="mb-4">
+                  <span
+                    class="dark:bg-dark-800 bg-white dark:text-primary-dark text-primary-light px-3 py-1 rounded-full text-sm font-bold"
+                    >Step 4</span
+                  >
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Get Predictions</h3>
+                <p class="dark:text-gray-300 text-gray-600">
+                  Receive accurate crop recommendations along with confidence
+                  scores, growing guidelines, and soil improvement suggestions
+                  tailored to your specific conditions.
+                </p>
+              </div>
+              <div
+                class="rounded-full bg-primary-dark z-10 w-14 h-14 flex items-center justify-center shadow-lg border-4 border-dark-950 dark:border-gray-100"
+              >
+                <i class="fas fa-chart-line text-black text-xl"></i>
+              </div>
+              <div class="md:w-1/2 md:pr-12 hidden md:block">
+                <img
+                  src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-4.0.3"
+                  alt="Monitoring Dashboard"
+                  class="rounded-lg shadow-lg w-full h-64 object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="py-16 dark:bg-secondary-dark bg-secondary-light">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl font-montserrat font-bold mb-4">
+            Ready to Get Started?
+          </h2>
+          <p class="dark:text-gray-300 text-gray-600 max-w-2xl mx-auto mb-8">
+            Start making data-driven decisions for your agriculture needs today.
+            Our models are continuously trained on the latest agricultural data.
+          </p>
+          <div class="flex justify-center flex-wrap gap-4">
+            <button
+              onclick="showPage('prediction'); return false;"
+              class="dark:bg-primary-dark bg-primary-light hover:dark:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-3 px-6 rounded-full transition-all btn-primary"
+            >
+              Try Demo <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+            <button
+              onclick="showPage('training'); return false;"
+              class="dark:border dark:border-gray-600 border border-gray-300 hover:dark:border-primary-dark hover:border-primary-light dark:text-white text-gray-800 hover:dark:text-primary-dark hover:text-primary-light font-medium py-3 px-6 rounded-full transition-colors"
+            >
+              Train Model <i class="fas fa-robot ml-2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer
+        class="dark:bg-dark bg-light py-12 dark:border-t dark:border-gray-800 border-t border-gray-200"
+      >
+        <div class="container mx-auto px-6">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3
+                class="dark:text-primary-dark text-primary-light font-montserrat font-bold text-xl mb-4"
+              >
+                AgroPredicta
+              </h3>
+              <p class="dark:text-gray-400 text-gray-500 text-sm">
+                Making agriculture smarter with AI-powered predictions.
+              </p>
+            </div>
+            <div>
+              <h4
+                class="dark:text-white text-gray-800 font-montserrat font-semibold mb-4"
+              >
+                Product
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >Features</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >Pricing</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >API</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >Documentation</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4
+                class="dark:text-white text-gray-800 font-montserrat font-semibold mb-4"
+              >
+                Resources
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >Blog</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >Research</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >Case Studies</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >Help Center</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4
+                class="dark:text-white text-gray-800 font-montserrat font-semibold mb-4"
+              >
+                Company
+              </h4>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >Careers</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >Contact</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                    >Privacy</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="dark:border-t dark:border-gray-800 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center"
+          >
+            <p class="dark:text-gray-500 text-gray-400 text-sm mb-4 md:mb-0">
+              © 2023 AgroPredicta. All rights reserved.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="#"
+                class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                href="#"
+                class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- Training Page with Visualizations -->
+    <section id="trainingPage" class="page hidden min-h-screen pt-24 pb-12">
+      <div class="container mx-auto px-6">
+        <div class="mb-8">
+          <h2 class="text-3xl font-montserrat font-bold mb-4">
+            Train Your Model
+          </h2>
+          <p class="dark:text-gray-300 text-gray-600">
+            Create and customize machine learning models for accurate crop
+            predictions
+          </p>
+        </div>
+
+        <!-- Dataset Upload Section -->
+        <div
+          class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6 mb-10"
+        >
+          <h3 class="text-xl font-montserrat font-semibold mb-4">
+            Upload Dataset
+          </h3>
+
+          <div
+            class="border-2 border-dashed dark:border-gray-700 border-gray-300 rounded-xl p-8 text-center hover:dark:border-primary-dark hover:border-primary-light transition-colors cursor-pointer"
+          >
+            <i
+              class="fas fa-cloud-upload-alt dark:text-primary-dark text-primary-light text-4xl mb-4"
+            ></i>
+            <p class="dark:text-gray-300 text-gray-600 mb-2">
+              Drag and drop your CSV file here or click to browse
+            </p>
+            <p class="dark:text-gray-500 text-gray-500 text-sm mb-4">
+              Supported formats: CSV, XLS, XLSX (Max size: 10MB)
+            </p>
+            <button
+              class="dark:bg-primary-dark/20 bg-primary-light/20 hover:dark:bg-primary-dark/30 hover:bg-primary-light/30 dark:text-primary-dark text-primary-light font-medium py-2 px-4 rounded-lg transition-colors"
+            >
+              Browse Files
+            </button>
+          </div>
+
+          <div class="mt-6">
+            <h4 class="font-montserrat font-medium mb-2">
+              Sample Dataset Format
+            </h4>
+            <div class="overflow-x-auto">
+              <table
+                class="min-w-full dark:bg-dark bg-white rounded-lg overflow-hidden"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-left text-xs dark:text-gray-400 text-gray-500"
+                    >
+                      N
+                    </th>
+                    <th
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-left text-xs dark:text-gray-400 text-gray-500"
+                    >
+                      P
+                    </th>
+                    <th
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-left text-xs dark:text-gray-400 text-gray-500"
+                    >
+                      K
+                    </th>
+                    <th
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-left text-xs dark:text-gray-400 text-gray-500"
+                    >
+                      pH
+                    </th>
+                    <th
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-left text-xs dark:text-gray-400 text-gray-500"
+                    >
+                      Rainfall
+                    </th>
+                    <th
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-left text-xs dark:text-gray-400 text-gray-500"
+                    >
+                      Temperature
+                    </th>
+                    <th
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-left text-xs dark:text-gray-400 text-gray-500"
+                    >
+                      Humidity
+                    </th>
+                    <th
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-left text-xs dark:text-gray-400 text-gray-500"
+                    >
+                      Crop
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      90
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      42
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      43
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      6.5
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      78
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      21
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      82
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      Rice
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      85
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      58
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      41
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      7.0
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      103
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      19
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      86
+                    </td>
+                    <td
+                      class="px-4 py-3 dark:border-b dark:border-gray-700 border-b border-gray-200 text-sm"
+                    >
+                      Wheat
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Algorithm Selection Section -->
+        <div
+          class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6 mb-10"
+        >
+          <h3 class="text-xl font-montserrat font-semibold mb-4">
+            Select Algorithm
+          </h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- Random Forest Algorithm Card -->
+            <div
+              class="dark:border dark:border-gray-700 border border-gray-300 hover:dark:border-primary-dark hover:border-primary-light rounded-xl p-6 cursor-pointer transition-all duration-300 zoom-on-hover"
+            >
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h4 class="font-montserrat font-semibold text-lg">
+                    Random Forest
+                  </h4>
+                  <p class="dark:text-gray-400 text-gray-500 text-sm">
+                    Ensemble learning method
+                  </p>
+                </div>
+                <div
+                  class="w-12 h-12 dark:bg-primary-dark/20 bg-primary-light/20 rounded-full flex items-center justify-center"
+                >
+                  <i
+                    class="fas fa-tree dark:text-primary-dark text-primary-light"
+                  ></i>
+                </div>
+              </div>
+              <p class="dark:text-gray-300 text-gray-600 mb-4">
+                An ensemble of decision trees that improves prediction accuracy
+                and controls overfitting.
+              </p>
+              <div class="space-y-2">
+                <div class="flex items-center">
+                  <i
+                    class="fas fa-check dark:text-primary-dark text-primary-light mr-2"
+                  ></i>
+                  <span class="text-sm"
+                    >High accuracy for diverse datasets</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <i
+                    class="fas fa-check dark:text-primary-dark text-primary-light mr-2"
+                  ></i>
+                  <span class="text-sm">Handles outliers effectively</span>
+                </div>
+                <div class="flex items-center">
+                  <i
+                    class="fas fa-check dark:text-primary-dark text-primary-light mr-2"
+                  ></i>
+                  <span class="text-sm"
+                    >Ideal for complex crop-soil relationships</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- XGBoost Algorithm Card -->
+            <div
+              class="dark:border dark:border-gray-700 border border-gray-300 hover:dark:border-primary-dark hover:border-primary-light rounded-xl p-6 cursor-pointer transition-all duration-300 zoom-on-hover"
+            >
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h4 class="font-montserrat font-semibold text-lg">XGBoost</h4>
+                  <p class="dark:text-gray-400 text-gray-500 text-sm">
+                    Gradient boosting framework
+                  </p>
+                </div>
+                <div
+                  class="w-12 h-12 dark:bg-primary-dark/20 bg-primary-light/20 rounded-full flex items-center justify-center"
+                >
+                  <i
+                    class="fas fa-bolt dark:text-primary-dark text-primary-light"
+                  ></i>
+                </div>
+              </div>
+              <p class="dark:text-gray-300 text-gray-600 mb-4">
+                A powerful algorithm that sequentially builds models to correct
+                errors from previous iterations.
+              </p>
+              <div class="space-y-2">
+                <div class="flex items-center">
+                  <i
+                    class="fas fa-check dark:text-primary-dark text-primary-light mr-2"
+                  ></i>
+                  <span class="text-sm"
+                    >Superior performance on structured data</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <i
+                    class="fas fa-check dark:text-primary-dark text-primary-light mr-2"
+                  ></i>
+                  <span class="text-sm"
+                    >Built-in regularization to prevent overfitting</span
+                  >
+                </div>
+                <div class="flex items-center">
+                  <i
+                    class="fas fa-check dark:text-primary-dark text-primary-light mr-2"
+                  ></i>
+                  <span class="text-sm"
+                    >Excellent for complex agricultural predictions</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Training Visualization Section (NEW) -->
+        <div
+          class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6 mb-10"
+        >
+          <h3 class="text-xl font-montserrat font-semibold mb-6">
+            Training Visualization
+          </h3>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Live Training Progress -->
+            <div>
+              <div class="mb-6">
+                <h4 class="font-medium mb-2">Training Progress</h4>
+                <div class="dark:bg-dark/50 bg-white/80 p-4 rounded-lg">
+                  <div class="mb-3">
+                    <div class="flex justify-between items-center mb-1">
+                      <span class="text-sm">Dataset Preprocessing</span>
+                      <span
+                        class="text-sm dark:text-primary-dark text-primary-light"
+                        >Completed</span
+                      >
+                    </div>
+                    <div
+                      class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                    >
+                      <div
+                        class="dark:bg-primary-dark bg-primary-light h-full rounded-full w-full"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="flex justify-between items-center mb-1">
+                      <span class="text-sm">Feature Selection</span>
+                      <span
+                        class="text-sm dark:text-primary-dark text-primary-light"
+                        >Completed</span
+                      >
+                    </div>
+                    <div
+                      class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                    >
+                      <div
+                        class="dark:bg-primary-dark bg-primary-light h-full rounded-full w-full"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="flex justify-between items-center mb-1">
+                      <span class="text-sm">Model Training</span>
+                      <span
+                        class="text-sm dark:text-primary-dark text-primary-light"
+                        >72%</span
+                      >
+                    </div>
+                    <div
+                      class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                    >
+                      <div
+                        class="dark:bg-primary-dark bg-primary-light h-full rounded-full train-progress"
+                        style="width: 72%"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="flex justify-between items-center mb-1">
+                      <span class="text-sm">Cross Validation</span>
+                      <span class="text-sm dark:text-gray-400 text-gray-500"
+                        >Pending</span
+                      >
+                    </div>
+                    <div
+                      class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                    >
+                      <div
+                        class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                        style="width: 0%"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="flex justify-between items-center mb-1">
+                      <span class="text-sm">Model Evaluation</span>
+                      <span class="text-sm dark:text-gray-400 text-gray-500"
+                        >Pending</span
+                      >
+                    </div>
+                    <div
+                      class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                    >
+                      <div
+                        class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                        style="width: 0%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feature Importance Chart -->
+              <div>
+                <h4 class="font-medium mb-2">Feature Importance</h4>
+                <div class="dark:bg-dark/50 bg-white/80 p-4 rounded-lg">
+                  <div class="space-y-3">
+                    <div>
+                      <div class="flex justify-between mb-1">
+                        <span class="text-sm">Nitrogen (N)</span>
+                        <span
+                          class="text-sm dark:text-primary-dark text-primary-light"
+                          >28%</span
+                        >
+                      </div>
+                      <div
+                        class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 28%"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="flex justify-between mb-1">
+                        <span class="text-sm">Rainfall</span>
+                        <span
+                          class="text-sm dark:text-primary-dark text-primary-light"
+                          >22%</span
+                        >
+                      </div>
+                      <div
+                        class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 22%"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="flex justify-between mb-1">
+                        <span class="text-sm">Temperature</span>
+                        <span
+                          class="text-sm dark:text-primary-dark text-primary-light"
+                          >18%</span
+                        >
+                      </div>
+                      <div
+                        class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 18%"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="flex justify-between mb-1">
+                        <span class="text-sm">Phosphorus (P)</span>
+                        <span
+                          class="text-sm dark:text-primary-dark text-primary-light"
+                          >14%</span
+                        >
+                      </div>
+                      <div
+                        class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 14%"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="flex justify-between mb-1">
+                        <span class="text-sm">Potassium (K)</span>
+                        <span
+                          class="text-sm dark:text-primary-dark text-primary-light"
+                          >12%</span
+                        >
+                      </div>
+                      <div
+                        class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 12%"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="flex justify-between mb-1">
+                        <span class="text-sm">Others</span>
+                        <span
+                          class="text-sm dark:text-primary-dark text-primary-light"
+                          >6%</span
+                        >
+                      </div>
+                      <div
+                        class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 6%"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Training Metrics Visualization -->
+            <div>
+              <h4 class="font-medium mb-2">Training Metrics</h4>
+              <div class="dark:bg-dark/50 bg-white/80 p-4 rounded-lg">
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div
+                    class="p-4 dark:bg-secondary-dark/50 bg-gray-50 rounded-lg text-center"
+                  >
+                    <span
+                      class="text-sm dark:text-gray-400 text-gray-500 block mb-1"
+                      >Accuracy</span
+                    >
+                    <span
+                      class="text-3xl font-bold dark:text-primary-dark text-primary-light"
+                      >93.8%</span
+                    >
+                  </div>
+
+                  <div
+                    class="p-4 dark:bg-secondary-dark/50 bg-gray-50 rounded-lg text-center"
+                  >
+                    <span
+                      class="text-sm dark:text-gray-400 text-gray-500 block mb-1"
+                      >F1 Score</span
+                    >
+                    <span
+                      class="text-3xl font-bold dark:text-primary-dark text-primary-light"
+                      >0.92</span
+                    >
+                  </div>
+
+                  <div
+                    class="p-4 dark:bg-secondary-dark/50 bg-gray-50 rounded-lg text-center"
+                  >
+                    <span
+                      class="text-sm dark:text-gray-400 text-gray-500 block mb-1"
+                      >Precision</span
+                    >
+                    <span
+                      class="text-3xl font-bold dark:text-primary-dark text-primary-light"
+                      >0.94</span
+                    >
+                  </div>
+
+                  <div
+                    class="p-4 dark:bg-secondary-dark/50 bg-gray-50 rounded-lg text-center"
+                  >
+                    <span
+                      class="text-sm dark:text-gray-400 text-gray-500 block mb-1"
+                      >Recall</span
+                    >
+                    <span
+                      class="text-3xl font-bold dark:text-primary-dark text-primary-light"
+                      >0.91</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Learning Curve Chart -->
+                <div class="mb-6">
+                  <h5 class="text-sm font-medium mb-2">Learning Curve</h5>
+                  <div
+                    class="h-56 dark:bg-secondary-dark/50 bg-gray-50 rounded-lg p-4 relative"
+                  >
+                    <!-- Simplified line chart visualization using SVG -->
+                    <svg
+                      class="w-full h-full"
+                      viewBox="0 0 320 160"
+                      preserveAspectRatio="none"
+                    >
+                      <!-- Grid lines -->
+                      <line
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="160"
+                        stroke="rgba(156, 163, 175, 0.2)"
+                      />
+                      <line
+                        x1="0"
+                        y1="160"
+                        x2="320"
+                        y2="160"
+                        stroke="rgba(156, 163, 175, 0.2)"
+                      />
+                      <line
+                        x1="0"
+                        y1="120"
+                        x2="320"
+                        y2="120"
+                        stroke="rgba(156, 163, 175, 0.2)"
+                        stroke-dasharray="4"
+                      />
+                      <line
+                        x1="0"
+                        y1="80"
+                        x2="320"
+                        y2="80"
+                        stroke="rgba(156, 163, 175, 0.2)"
+                        stroke-dasharray="4"
+                      />
+                      <line
+                        x1="0"
+                        y1="40"
+                        x2="320"
+                        y2="40"
+                        stroke="rgba(156, 163, 175, 0.2)"
+                        stroke-dasharray="4"
+                      />
+
+                      <!-- Training accuracy line -->
+                      <path
+                        d="M0,120 C20,110 40,90 80,70 S160,45 240,35 L320,25"
+                        fill="none"
+                        stroke="#2de370"
+                        stroke-width="2.5"
+                      />
+
+                      <!-- Validation accuracy line -->
+                      <path
+                        d="M0,140 C20,130 40,120 80,100 S160,80 240,75 L320,70"
+                        fill="none"
+                        stroke="#60a5fa"
+                        stroke-width="2.5"
+                        stroke-dasharray="5,5"
+                      />
+                    </svg>
+
+                    <!-- Legend -->
+                    <div
+                      class="absolute bottom-2 right-2 flex items-center space-x-4 text-xs"
+                    >
+                      <div class="flex items-center">
+                        <span
+                          class="inline-block w-3 h-3 mr-1 dark:bg-primary-dark bg-primary-light rounded-full"
+                        ></span>
+                        <span>Training</span>
+                      </div>
+                      <div class="flex items-center">
+                        <span
+                          class="inline-block w-3 h-3 mr-1 bg-blue-400 rounded-full"
+                        ></span>
+                        <span>Validation</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Confusion Matrix -->
+                <div>
+                  <h5 class="text-sm font-medium mb-2">Confusion Matrix</h5>
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm">
+                      <thead>
+                        <tr>
+                          <th
+                            class="py-2 px-3 dark:bg-secondary-dark/70 bg-gray-100 text-left"
+                          >
+                            Actual \ Predicted
+                          </th>
+                          <th
+                            class="py-2 px-3 dark:bg-secondary-dark/70 bg-gray-100 text-center"
+                          >
+                            Rice
+                          </th>
+                          <th
+                            class="py-2 px-3 dark:bg-secondary-dark/70 bg-gray-100 text-center"
+                          >
+                            Wheat
+                          </th>
+                          <th
+                            class="py-2 px-3 dark:bg-secondary-dark/70 bg-gray-100 text-center"
+                          >
+                            Maize
+                          </th>
+                          <th
+                            class="py-2 px-3 dark:bg-secondary-dark/70 bg-gray-100 text-center"
+                          >
+                            Cotton
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td
+                            class="py-2 px-3 dark:bg-secondary-dark/70 bg-gray-100 font-medium"
+                          >
+                            Rice
+                          </td>
+                          <td
+                            class="py-2 px-3 text-center dark:bg-primary-dark/20 bg-primary-light/20 dark:text-primary-dark text-primary-light font-medium"
+                          >
+                            58
+                          </td>
+                          <td class="py-2 px-3 text-center">3</td>
+                          <td class="py-2 px-3 text-center">2</td>
+                          <td class="py-2 px-3 text-center">1</td>
+                        </tr>
+                        <tr>
+                          <td
+                            class="py-2 px-3 dark:bg-secondary-dark/70 bg-gray-100 font-medium"
+                          >
+                            Wheat
+                          </td>
+                          <td class="py-2 px-3 text-center">2</td>
+                          <td
+                            class="py-2 px-3 text-center dark:bg-primary-dark/20 bg-primary-light/20 dark:text-primary-dark text-primary-light font-medium"
+                          >
+                            64
+                          </td>
+                          <td class="py-2 px-3 text-center">4</td>
+                          <td class="py-2 px-3 text-center">1</td>
+                        </tr>
+                        <tr>
+                          <td
+                            class="py-2 px-3 dark:bg-secondary-dark/70 bg-gray-100 font-medium"
+                          >
+                            Maize
+                          </td>
+                          <td class="py-2 px-3 text-center">1</td>
+                          <td class="py-2 px-3 text-center">3</td>
+                          <td
+                            class="py-2 px-3 text-center dark:bg-primary-dark/20 bg-primary-light/20 dark:text-primary-dark text-primary-light font-medium"
+                          >
+                            52
+                          </td>
+                          <td class="py-2 px-3 text-center">2</td>
+                        </tr>
+                        <tr>
+                          <td
+                            class="py-2 px-3 dark:bg-secondary-dark/70 bg-gray-100 font-medium"
+                          >
+                            Cotton
+                          </td>
+                          <td class="py-2 px-3 text-center">0</td>
+                          <td class="py-2 px-3 text-center">2</td>
+                          <td class="py-2 px-3 text-center">1</td>
+                          <td
+                            class="py-2 px-3 text-center dark:bg-primary-dark/20 bg-primary-light/20 dark:text-primary-dark text-primary-light font-medium"
+                          >
+                            48
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex justify-end">
+            <button
+              class="dark:bg-primary-dark bg-primary-light hover:dark:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-2 px-6 rounded-lg transition-all btn-primary"
+            >
+              Save Model <i class="fas fa-save ml-2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Testing Page -->
+    <section id="predictionPage" class="page min-h-screen pt-24 pb-12">
+        <div class="container mx-auto px-6">
+          <!-- Header -->
+          <div class="mb-8">
+            <h2 class="text-3xl font-montserrat font-bold mb-4">
+              Crop Prediction Tool
+            </h2>
+            <p class="dark:text-gray-300 text-gray-600">
+              Get accurate crop recommendations based on your soil and local environmental conditions
+            </p>
+          </div>
+      
+          <!-- Main Content Card -->
+          <div class="dark:bg-secondary-dark bg-secondary-light rounded-xl overflow-hidden mb-10">
+            <!-- Location Toggle -->
+            <div class="bg-gradient-to-r from-primary-dark/20 to-transparent p-4 flex items-center justify-between">
+              <div class="flex items-center">
+                <div class="bg-primary-dark text-black p-2 rounded-full mr-3">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h3 class="font-medium">Your Location</h3>
+                  <p class="text-sm dark:text-gray-400 text-gray-600" id="locationDisplay">No location data</p>
+                </div>
+              </div>
+              <div class="flex items-center bg-dark/20 p-2 rounded-full">
+                <button id="locationBtn" class="flex items-center bg-gradient-to-r from-primary-dark to-primary-dark/80 text-black font-medium px-4 py-2 rounded-full hover:shadow-lg transition-all">
+                  <i class="fas fa-crosshairs mr-2"></i> 
+                  Use My Location
+                </button>
+                <div id="locationStatus" class="ml-3 hidden">
+                  <div class="animate-pulse flex">
+                    <div class="h-3 w-3 bg-green-500 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Content Grid -->
+            <div class="p-6 grid md:grid-cols-2 gap-8">
+              <!-- Left column: Soil Parameters -->
+              <div>
+                <div class="flex items-center mb-4">
+                  <div class="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 p-2 rounded-full mr-3">
+                    <i class="fas fa-flask"></i>
+                  </div>
+                  <h3 class="text-xl font-semibold">Soil Parameters</h3>
+                </div>
+      
+                <div class="space-y-5">
+                  <!-- Nitrogen Slider -->
+                  <div class="dark:bg-dark/30 bg-white/30 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <label class="flex items-center">
+                        <span class="w-8 h-8 rounded-full dark:bg-green-800/30 bg-green-100 flex items-center justify-center mr-2">
+                          <span class="text-sm font-medium dark:text-green-400 text-green-800">N</span>
+                        </span>
+                        <span class="font-medium">Nitrogen</span>
+                      </label>
+                      <div class="flex items-center">
+                        <input type="number" id="nitrogenInput" 
+                            class="w-16 h-8 dark:bg-dark bg-white border dark:border-gray-700 border-gray-300 rounded text-center text-sm"
+                            value="75" min="0" max="150">
+                        <span class="ml-1 text-sm">kg/ha</span>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <input type="range" id="nitrogenSlider" min="0" max="150" value="75"
+                            class="w-full h-2 dark:bg-gray-700 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-dark">
+                    </div>
+                    <p class="text-xs dark:text-gray-400 text-gray-500 mt-2">
+                      Optimal level: 60-100 kg/ha for most crops
+                    </p>
+                  </div>
+      
+                  <!-- Phosphorus Slider -->
+                  <div class="dark:bg-dark/30 bg-white/30 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <label class="flex items-center">
+                        <span class="w-8 h-8 rounded-full dark:bg-yellow-800/30 bg-yellow-100 flex items-center justify-center mr-2">
+                          <span class="text-sm font-medium dark:text-yellow-400 text-yellow-800">P</span>
+                        </span>
+                        <span class="font-medium">Phosphorus</span>
+                      </label>
+                      <div class="flex items-center">
+                        <input type="number" id="phosphorusInput"
+                            class="w-16 h-8 dark:bg-dark bg-white border dark:border-gray-700 border-gray-300 rounded text-center text-sm"
+                            value="45" min="0" max="100">
+                        <span class="ml-1 text-sm">kg/ha</span>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <input type="range" id="phosphorusSlider" min="0" max="100" value="45"
+                            class="w-full h-2 dark:bg-gray-700 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-dark">
+                    </div>
+                    <p class="text-xs dark:text-gray-400 text-gray-500 mt-2">
+                      Optimal level: 30-60 kg/ha for most crops
+                    </p>
+                  </div>
+      
+                  <!-- Potassium Slider -->
+                  <div class="dark:bg-dark/30 bg-white/30 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <label class="flex items-center">
+                        <span class="w-8 h-8 rounded-full dark:bg-cyan-800/30 bg-cyan-100 flex items-center justify-center mr-2">
+                          <span class="text-sm font-medium dark:text-cyan-400 text-cyan-800">K</span>
+                        </span>
+                        <span class="font-medium">Potassium</span>
+                      </label>
+                      <div class="flex items-center">
+                        <input type="number" id="potassiumInput"
+                            class="w-16 h-8 dark:bg-dark bg-white border dark:border-gray-700 border-gray-300 rounded text-center text-sm"
+                            value="80" min="0" max="120">
+                        <span class="ml-1 text-sm">kg/ha</span>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <input type="range" id="potassiumSlider" min="0" max="120" value="80"
+                            class="w-full h-2 dark:bg-gray-700 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-dark">
+                    </div>
+                    <p class="text-xs dark:text-gray-400 text-gray-500 mt-2">
+                      Optimal level: 60-100 kg/ha for most crops
+                    </p>
+                  </div>
+      
+                  <!-- pH Slider -->
+                  <div class="dark:bg-dark/30 bg-white/30 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <label class="flex items-center">
+                        <span class="w-8 h-8 rounded-full dark:bg-purple-800/30 bg-purple-100 flex items-center justify-center mr-2">
+                          <span class="text-sm font-medium dark:text-purple-400 text-purple-800">pH</span>
+                        </span>
+                        <span class="font-medium">Soil pH</span>
+                      </label>
+                      <div class="flex items-center">
+                        <input type="number" id="phInput" step="0.1" min="0" max="14"
+                            class="w-16 h-8 dark:bg-dark bg-white border dark:border-gray-700 border-gray-300 rounded text-center text-sm"
+                            value="6.5">
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <input type="range" id="phSlider" min="0" max="14" step="0.1" value="6.5"
+                            class="w-full h-2 dark:bg-gray-700 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-dark">
+                      <div class="flex justify-between text-xs mt-1 dark:text-gray-400 text-gray-500">
+                        <span>Acidic (0)</span>
+                        <span>Neutral (7)</span>
+                        <span>Alkaline (14)</span>
+                      </div>
+                    </div>
+                    <p class="text-xs dark:text-gray-400 text-gray-500 mt-2">
+                      Optimal level: 6.0-7.5 for most crops
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+      
+              <!-- Right column: Environmental Factors -->
+              <div>
+                <div class="flex items-center mb-4">
+                  <div class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 p-2 rounded-full mr-3">
+                    <i class="fas fa-cloud-sun-rain"></i>
+                  </div>
+                  <h3 class="text-xl font-semibold">Environmental Factors</h3>
+                  <div id="autoFillNotice" class="hidden ml-3 bg-primary-dark/20 text-xs font-medium text-black dark:text-white px-2 py-1 rounded-full">
+                    Auto-filled from location
+                  </div>
+                </div>
+      
+                <div class="space-y-5">
+                  <!-- Temperature -->
+                  <div class="dark:bg-dark/30 bg-white/30 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <label class="flex items-center">
+                        <span class="w-8 h-8 rounded-full dark:bg-orange-800/30 bg-orange-100 flex items-center justify-center mr-2">
+                          <i class="fas fa-temperature-high text-sm dark:text-orange-400 text-orange-800"></i>
+                        </span>
+                        <span class="font-medium">Average Temperature</span>
+                      </label>
+                      <div class="flex items-center">
+                        <input type="number" id="temperatureInput"
+                            class="w-16 h-8 dark:bg-dark bg-white border dark:border-gray-700 border-gray-300 rounded text-center text-sm"
+                            value="21" min="-20" max="50">
+                        <span class="ml-1 text-sm">°C</span>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <input type="range" id="temperatureSlider" min="-20" max="50" value="21"
+                            class="w-full h-2 dark:bg-gray-700 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-dark">
+                      <div class="flex justify-between text-xs mt-1 dark:text-gray-400 text-gray-500">
+                        <span>Cold</span>
+                        <span>Moderate</span>
+                        <span>Hot</span>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <!-- Rainfall -->
+                  <div class="dark:bg-dark/30 bg-white/30 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <label class="flex items-center">
+                        <span class="w-8 h-8 rounded-full dark:bg-blue-800/30 bg-blue-100 flex items-center justify-center mr-2">
+                          <i class="fas fa-cloud-rain text-sm dark:text-blue-400 text-blue-800"></i>
+                        </span>
+                        <span class="font-medium">Annual Rainfall</span>
+                      </label>
+                      <div class="flex items-center">
+                        <input type="number" id="rainfallInput"
+                            class="w-16 h-8 dark:bg-dark bg-white border dark:border-gray-700 border-gray-300 rounded text-center text-sm"
+                            value="95" min="0" max="300">
+                        <span class="ml-1 text-sm">cm</span>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <input type="range" id="rainfallSlider" min="0" max="300" value="95"
+                            class="w-full h-2 dark:bg-gray-700 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-dark">
+                      <div class="flex justify-between text-xs mt-1 dark:text-gray-400 text-gray-500">
+                        <span>Low</span>
+                        <span>Medium</span>
+                        <span>High</span>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <!-- Humidity -->
+                  <div class="dark:bg-dark/30 bg-white/30 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <label class="flex items-center">
+                        <span class="w-8 h-8 rounded-full dark:bg-teal-800/30 bg-teal-100 flex items-center justify-center mr-2">
+                          <i class="fas fa-water text-sm dark:text-teal-400 text-teal-800"></i>
+                        </span>
+                        <span class="font-medium">Humidity</span>
+                      </label>
+                      <div class="flex items-center">
+                        <input type="number" id="humidityInput"
+                            class="w-16 h-8 dark:bg-dark bg-white border dark:border-gray-700 border-gray-300 rounded text-center text-sm"
+                            value="65" min="0" max="100">
+                        <span class="ml-1 text-sm">%</span>
+                      </div>
+                    </div>
+                    <div class="relative">
+                      <input type="range" id="humiditySlider" min="0" max="100" value="65"
+                            class="w-full h-2 dark:bg-gray-700 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-dark">
+                      <div class="flex justify-between text-xs mt-1 dark:text-gray-400 text-gray-500">
+                        <span>Dry</span>
+                        <span>Average</span>
+                        <span>Humid</span>
+                      </div>
+                    </div>
+                  </div>
+      
+                  
+                </div>
+              </div>
+            </div>
+      
+            <!-- Action Buttons -->
+            <div class="p-6 bg-dark/10 border-t border-gray-700/30">
+              <div class="flex justify-between items-center">
+                <button class="flex items-center bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-all">
+                  <i class="fas fa-undo mr-2"></i> Reset Form
+                </button>
+                <div>
+                    <button class="flex items-center bg-primary-dark hover:bg-primary-dark/80 text-black font-medium px-6 py-3 rounded-lg transition-all" onclick="showPage('result'); return false;">
+                        <i class="fas fa-seedling mr-2"></i> Generate Crop Prediction
+                      </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- New Prediction Results Page -->
+    <section id="resultPage" class="page hidden min-h-screen pt-24 pb-12">
+      <div class="container mx-auto px-6">
+        <div class="mb-8 flex justify-between items-center">
+          <div>
+            <h2 class="text-3xl font-montserrat font-bold mb-2">
+              Prediction Results
+            </h2>
+            <p class="dark:text-gray-300 text-gray-600">
+              Based on your soil and environmental parameters
+            </p>
+          </div>
+          <button
+            onclick="showPage('prediction'); return false;"
+            class="dark:text-primary-dark text-primary-light hover:underline flex items-center"
+          >
+            <i class="fas fa-arrow-left mr-2"></i> Back to Parameters
+          </button>
+        </div>
+
+        <!-- Main Results Section with Visualizations -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Left: Top Recommendation -->
+          <div class="lg:col-span-2">
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl overflow-hidden"
+            >
+              <!-- Recommendation Header -->
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-4.0.3"
+                  alt="Wheat field"
+                  class="w-full h-48 object-cover"
+                />
+                <div
+                  class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent"
+                >
+                  <div class="flex justify-between items-end">
+                    <div>
+                      <div class="flex items-center mb-2">
+                        <div
+                          class="w-8 h-8 rounded-full bg-primary-dark flex items-center justify-center mr-2"
+                        >
+                          <i class="fas fa-seedling text-black"></i>
+                        </div>
+                        <span class="text-white text-sm"
+                          >Top Recommendation</span
+                        >
+                      </div>
+                      <h3 class="text-3xl font-montserrat font-bold text-white">
+                        Wheat
+                      </h3>
+                    </div>
+                    <div
+                      class="dark:bg-primary-dark bg-primary-light px-3 py-1 rounded-full text-lg font-bold"
+                    >
+                      <span class="dark:text-black text-white">92%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Result Content -->
+              <div class="p-6">
+                <!-- Detailed Match Information -->
+                <div class="mb-6">
+                  <h4 class="text-lg font-montserrat font-semibold mb-3">
+                    Match Analysis
+                  </h4>
+                  <p class="dark:text-gray-300 text-gray-600 mb-4">
+                    Wheat thrives in your soil conditions with high nitrogen,
+                    moderate phosphorus, and high potassium levels. The
+                    environmental factors are also optimal for wheat
+                    cultivation.
+                  </p>
+
+                  <!-- Parameter Match Visualization -->
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <!-- Nitrogen Match -->
+                    <div class="dark:bg-dark/50 bg-white/80 p-3 rounded-lg">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm">Nitrogen</span>
+                        <span
+                          class="text-xs dark:text-primary-dark text-primary-light"
+                          >95% match</span
+                        >
+                      </div>
+                      <div
+                        class="h-1.5 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 95%"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <!-- Phosphorus Match -->
+                    <div class="dark:bg-dark/50 bg-white/80 p-3 rounded-lg">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm">Phosphorus</span>
+                        <span
+                          class="text-xs dark:text-primary-dark text-primary-light"
+                          >82% match</span
+                        >
+                      </div>
+                      <div
+                        class="h-1.5 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 82%"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <!-- Potassium Match -->
+                    <div class="dark:bg-dark/50 bg-white/80 p-3 rounded-lg">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm">Potassium</span>
+                        <span
+                          class="text-xs dark:text-primary-dark text-primary-light"
+                          >90% match</span
+                        >
+                      </div>
+                      <div
+                        class="h-1.5 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 90%"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <!-- pH Match -->
+                    <div class="dark:bg-dark/50 bg-white/80 p-3 rounded-lg">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm">pH Level</span>
+                        <span
+                          class="text-xs dark:text-primary-dark text-primary-light"
+                          >98% match</span
+                        >
+                      </div>
+                      <div
+                        class="h-1.5 dark:bg-gray-700 bg-gray-200 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 98%"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Growth Conditions -->
+                <div class="mb-6">
+                  <h4 class="text-lg font-montserrat font-semibold mb-3">
+                    Optimal Growth Conditions
+                  </h4>
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div
+                      class="dark:bg-dark/50 bg-white/80 p-3 rounded-lg text-center"
+                    >
+                      <div
+                        class="text-lg dark:text-primary-dark text-primary-light mb-1"
+                      >
+                        <i class="fas fa-temperature-high"></i>
+                      </div>
+                      <span
+                        class="text-xs dark:text-gray-400 text-gray-500 block"
+                        >Temperature</span
+                      >
+                      <span class="font-medium">15-25°C</span>
+                    </div>
+
+                    <div
+                      class="dark:bg-dark/50 bg-white/80 p-3 rounded-lg text-center"
+                    >
+                      <div
+                        class="text-lg dark:text-primary-dark text-primary-light mb-1"
+                      >
+                        <i class="fas fa-cloud-rain"></i>
+                      </div>
+                      <span
+                        class="text-xs dark:text-gray-400 text-gray-500 block"
+                        >Rainfall</span
+                      >
+                      <span class="font-medium">450-650mm</span>
+                    </div>
+
+                    <div
+                      class="dark:bg-dark/50 bg-white/80 p-3 rounded-lg text-center"
+                    >
+                      <div
+                        class="text-lg dark:text-primary-dark text-primary-light mb-1"
+                      >
+                        <i class="fas fa-calendar-alt"></i>
+                      </div>
+                      <span
+                        class="text-xs dark:text-gray-400 text-gray-500 block"
+                        >Growth Period</span
+                      >
+                      <span class="font-medium">120-150 days</span>
+                    </div>
+
+                    <div
+                      class="dark:bg-dark/50 bg-white/80 p-3 rounded-lg text-center"
+                    >
+                      <div
+                        class="text-lg dark:text-primary-dark text-primary-light mb-1"
+                      >
+                        <i class="fas fa-seedling"></i>
+                      </div>
+                      <span
+                        class="text-xs dark:text-gray-400 text-gray-500 block"
+                        >Optimal pH</span
+                      >
+                      <span class="font-medium">6.0-7.5</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cultivation Guide Visualization -->
+                <div class="mb-6">
+                  <h4 class="text-lg font-montserrat font-semibold mb-3">
+                    Cultivation Timeline
+                  </h4>
+                  <div class="relative overflow-x-auto">
+                    <div class="min-w-[800px]">
+                      <!-- Month Timeline -->
+                      <div class="flex h-14 mb-4">
+                        <!-- Timeline background -->
+                        <div
+                          class="absolute h-4 w-full bg-gray-100 dark:bg-dark/50 top-10 rounded-full z-0"
+                        ></div>
+
+                        <!-- Months -->
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Jan
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Feb
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Mar
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Apr
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            May
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Jun
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Jul
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Aug
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Sep
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Oct
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Nov
+                          </div>
+                        </div>
+                        <div class="w-1/12 relative z-10">
+                          <div
+                            class="absolute top-10 left-1/2 w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 transform -translate-x-1/2"
+                          ></div>
+                          <div
+                            class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 text-xs"
+                          >
+                            Dec
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Activity Bars -->
+                      <div class="relative h-32">
+                        <!-- Planting Period -->
+                        <div
+                          class="absolute left-[8.333%] w-[16.666%] h-8 bg-green-500/60 dark:bg-green-500/40 rounded-lg flex items-center justify-center text-xs font-medium"
+                        >
+                          <i class="fas fa-seedling mr-1"></i> Planting
+                        </div>
+
+                        <!-- Growth Period -->
+                        <div
+                          class="absolute left-[25%] w-[33.333%] h-8 top-10 bg-blue-500/60 dark:bg-blue-500/40 rounded-lg flex items-center justify-center text-xs font-medium"
+                        >
+                          <i class="fas fa-leaf mr-1"></i> Growth & Development
+                        </div>
+
+                        <!-- Harvesting Period -->
+                        <div
+                          class="absolute left-[58.333%] w-[16.666%] h-8 top-20 bg-amber-500/60 dark:bg-amber-500/40 rounded-lg flex items-center justify-center text-xs font-medium"
+                        >
+                          <i class="fas fa-tractor mr-1"></i> Harvesting
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Growing Recommendations -->
+<div id="cropRecommendationsContainer">
+    <h4 class="text-lg font-montserrat font-semibold mb-3">
+      Growing Recommendations
+    </h4>
+    <div id="cropRecommendations" class="dark:bg-dark/30 bg-white/30 p-4 rounded-lg mb-6">
+      <!-- Recommendations will be dynamically inserted here -->
+      <div class="text-center p-4 loading-indicator">
+        <i class="fas fa-spinner fa-pulse text-primary-dark text-xl"></i>
+        <p class="mt-2 text-sm">Loading recommendations...</p>
+      </div>
+    </div>
+  
+    <div class="flex flex-wrap gap-3">
+      <button
+        class="dark:bg-primary-dark bg-primary-light hover:dark:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-2 px-4 rounded-lg transition-all"
+      >
+        <i class="fas fa-download mr-2"></i> Download Report
+      </button>
+      <button
+        class="dark:border dark:border-gray-600 border border-gray-300 hover:dark:border-primary-dark hover:border-primary-light dark:text-white text-gray-800 hover:dark:text-primary-dark hover:text-primary-light font-medium py-2 px-4 rounded-lg transition-colors"
+      >
+        <i class="fas fa-bookmark mr-2"></i> Save Result
+      </button>
+      <button
+        class="dark:border dark:border-gray-600 border border-gray-300 hover:dark:border-primary-dark hover:border-primary-light dark:text-white text-gray-800 hover:dark:text-primary-dark hover:text-primary-light font-medium py-2 px-4 rounded-lg transition-colors"
+      >
+        <i class="fas fa-share-alt mr-2"></i> Share
+      </button>
+    </div>
+  </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Sidebar -->
+          <div>
+            <!-- Crop Comparison Chart -->
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6 mb-6"
+            >
+              <h3 class="font-montserrat font-semibold mb-4">
+                Top Crop Matches
+              </h3>
+
+              <!-- Radar Chart Visualization -->
+              <div class="chart-container mb-6">
+                <!-- Simplified radar chart -->
+                <svg
+                  width="100%"
+                  height="250"
+                  viewBox="0 0 300 300"
+                  class="mx-auto"
+                >
+                  <!-- Chart background -->
+                  <circle
+                    cx="150"
+                    cy="150"
+                    r="120"
+                    fill="none"
+                    stroke="rgba(156, 163, 175, 0.1)"
+                    stroke-width="1"
+                  />
+                  <circle
+                    cx="150"
+                    cy="150"
+                    r="90"
+                    fill="none"
+                    stroke="rgba(156, 163, 175, 0.1)"
+                    stroke-width="1"
+                  />
+                  <circle
+                    cx="150"
+                    cy="150"
+                    r="60"
+                    fill="none"
+                    stroke="rgba(156, 163, 175, 0.1)"
+                    stroke-width="1"
+                  />
+                  <circle
+                    cx="150"
+                    cy="150"
+                    r="30"
+                    fill="none"
+                    stroke="rgba(156, 163, 175, 0.1)"
+                    stroke-width="1"
+                  />
+
+                  <!-- Axis lines -->
+                  <line
+                    x1="150"
+                    y1="30"
+                    x2="150"
+                    y2="270"
+                    stroke="rgba(156, 163, 175, 0.2)"
+                    stroke-width="1"
+                  />
+                  <line
+                    x1="30"
+                    y1="150"
+                    x2="270"
+                    y2="150"
+                    stroke="rgba(156, 163, 175, 0.2)"
+                    stroke-width="1"
+                  />
+                  <line
+                    x1="73"
+                    y1="73"
+                    x2="227"
+                    y2="227"
+                    stroke="rgba(156, 163, 175, 0.2)"
+                    stroke-width="1"
+                  />
+                  <line
+                    x1="227"
+                    y1="73"
+                    x2="73"
+                    y2="227"
+                    stroke="rgba(156, 163, 175, 0.2)"
+                    stroke-width="1"
+                  />
+
+                  <!-- Wheat data (92%) -->
+                  <path
+                    d="M150,40 L245,120 L210,240 L90,240 L55,120 Z"
+                    fill="rgba(45, 227, 112, 0.3)"
+                    stroke="rgba(45, 227, 112, 0.8)"
+                    stroke-width="2"
+                  />
+
+                  <!-- Barley data (85%) -->
+                  <path
+                    d="M150,55 L230,120 L195,225 L105,225 L70,120 Z"
+                    fill="rgba(59, 130, 246, 0.2)"
+                    stroke="rgba(59, 130, 246, 0.6)"
+                    stroke-width="1.5"
+                    stroke-dasharray="4,2"
+                  />
+
+                  <!-- Oats data (78%) -->
+                  <path
+                    d="M150,70 L215,130 L180,215 L120,215 L85,130 Z"
+                    fill="rgba(245, 158, 11, 0.2)"
+                    stroke="rgba(245, 158, 11, 0.6)"
+                    stroke-width="1.5"
+                    stroke-dasharray="4,2"
+                  />
+
+                  <!-- Data points for Wheat -->
+                  <circle cx="150" cy="40" r="4" fill="#2de370" />
+                  <circle cx="245" cy="120" r="4" fill="#2de370" />
+                  <circle cx="210" cy="240" r="4" fill="#2de370" />
+                  <circle cx="90" cy="240" r="4" fill="#2de370" />
+                  <circle cx="55" cy="120" r="4" fill="#2de370" />
+
+                  <!-- Labels -->
+                  <text
+                    x="150"
+                    y="20"
+                    text-anchor="middle"
+                    font-size="10"
+                    fill="currentColor"
+                  >
+                    Soil Match
+                  </text>
+                  <text
+                    x="280"
+                    y="150"
+                    text-anchor="start"
+                    font-size="10"
+                    fill="currentColor"
+                  >
+                    Climate
+                  </text>
+                  <text
+                    x="150"
+                    y="280"
+                    text-anchor="middle"
+                    font-size="10"
+                    fill="currentColor"
+                  >
+                    Yield Potential
+                  </text>
+                  <text
+                    x="20"
+                    y="150"
+                    text-anchor="end"
+                    font-size="10"
+                    fill="currentColor"
+                  >
+                    Water Needs
+                  </text>
+                  <text
+                    x="75"
+                    y="65"
+                    text-anchor="middle"
+                    font-size="10"
+                    fill="currentColor"
+                  >
+                    Disease Resistance
+                  </text>
+
+                  <!-- Legend -->
+                  <rect
+                    x="75"
+                    y="290"
+                    width="10"
+                    height="10"
+                    fill="rgba(45, 227, 112, 0.3)"
+                    stroke="rgba(45, 227, 112, 0.8)"
+                    stroke-width="2"
+                  />
+                  <text
+                    x="90"
+                    y="298"
+                    text-anchor="start"
+                    font-size="10"
+                    fill="currentColor"
+                  >
+                    Wheat (92%)
+                  </text>
+
+                  <rect
+                    x="165"
+                    y="290"
+                    width="10"
+                    height="10"
+                    fill="rgba(59, 130, 246, 0.2)"
+                    stroke="rgba(59, 130, 246, 0.6)"
+                    stroke-width="1.5"
+                  />
+                  <text
+                    x="180"
+                    y="298"
+                    text-anchor="start"
+                    font-size="10"
+                    fill="currentColor"
+                  >
+                    Barley (85%)
+                  </text>
+                </svg>
+              </div>
+
+              <!-- Alternative Crops List -->
+              <div class="space-y-4">
+                <div
+                  class="flex items-center p-3 dark:bg-dark/50 bg-white/60 rounded-lg"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1601489669366-75f3db4129a7?ixlib=rb-4.0.3"
+                    alt="Barley"
+                    class="w-16 h-16 object-cover rounded-lg mr-4"
+                  />
+                  <div>
+                    <h4 class="font-medium">Barley</h4>
+                    <div class="flex items-center">
+                      <div
+                        class="w-24 h-2 dark:bg-gray-700 bg-gray-200 rounded-full mr-2"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 85%"
+                        ></div>
+                      </div>
+                      <span
+                        class="text-sm dark:text-primary-dark text-primary-light"
+                        >85%</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="flex items-center p-3 dark:bg-dark/50 bg-white/60 rounded-lg"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1562751362-a3c867710742?ixlib=rb-4.0.3"
+                    alt="Oats"
+                    class="w-16 h-16 object-cover rounded-lg mr-4"
+                  />
+                  <div>
+                    <h4 class="font-medium">Oats</h4>
+                    <div class="flex items-center">
+                      <div
+                        class="w-24 h-2 dark:bg-gray-700 bg-gray-200 rounded-full mr-2"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 78%"
+                        ></div>
+                      </div>
+                      <span
+                        class="text-sm dark:text-primary-dark text-primary-light"
+                        >78%</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="flex items-center p-3 dark:bg-dark/50 bg-white/60 rounded-lg"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1563596782-49b2cb309370?ixlib=rb-4.0.3"
+                    alt="Maize"
+                    class="w-16 h-16 object-cover rounded-lg mr-4"
+                  />
+                  <div>
+                    <h4 class="font-medium">Maize</h4>
+                    <div class="flex items-center">
+                      <div
+                        class="w-24 h-2 dark:bg-gray-700 bg-gray-200 rounded-full mr-2"
+                      >
+                        <div
+                          class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                          style="width: 70%"
+                        ></div>
+                      </div>
+                      <span
+                        class="text-sm dark:text-primary-dark text-primary-light"
+                        >70%</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Weather Forecast Integration -->
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6"
+            >
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="font-montserrat font-semibold">Weather Forecast</h3>
+                <span class="text-xs dark:text-gray-400 text-gray-500"
+                  >Next 7 days</span
+                >
+              </div>
+
+              <div class="space-y-4">
+                <!-- Today -->
+                <div class="dark:bg-dark/30 bg-white/30 p-3 rounded-lg">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span class="text-sm font-medium">Today</span>
+                      <div class="text-xs dark:text-gray-400 text-gray-500">
+                        Apr 15
+                      </div>
+                    </div>
+                    <div class="flex items-center">
+                      <i class="fas fa-sun text-yellow-500 text-2xl mr-2"></i>
+                      <div>
+                        <div class="font-medium">24°C</div>
+                        <div class="text-xs dark:text-gray-400 text-gray-500">
+                          Sunny
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tomorrow -->
+                <div class="dark:bg-dark/30 bg-white/30 p-3 rounded-lg">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span class="text-sm font-medium">Tomorrow</span>
+                      <div class="text-xs dark:text-gray-400 text-gray-500">
+                        Apr 16
+                      </div>
+                    </div>
+                    <div class="flex items-center">
+                      <i
+                        class="fas fa-cloud-sun text-blue-400 text-2xl mr-2"
+                      ></i>
+                      <div>
+                        <div class="font-medium">22°C</div>
+                        <div class="text-xs dark:text-gray-400 text-gray-500">
+                          Partly Cloudy
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- The day after tomorrow -->
+                <div class="dark:bg-dark/30 bg-white/30 p-3 rounded-lg">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <span class="text-sm font-medium">Sunday</span>
+                      <div class="text-xs dark:text-gray-400 text-gray-500">
+                        Apr 17
+                      </div>
+                    </div>
+                    <div class="flex items-center">
+                      <i
+                        class="fas fa-cloud-showers-heavy text-blue-500 text-2xl mr-2"
+                      ></i>
+                      <div>
+                        <div class="font-medium">19°C</div>
+                        <div class="text-xs dark:text-gray-400 text-gray-500">
+                          Rain Showers
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  class="w-full text-center dark:text-primary-dark text-primary-light text-sm hover:underline mt-2"
+                >
+                  View Full Forecast <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Login and Register Pages remain the same -->
+
+    <!-- Login Page (Redesigned) -->
+    <section id="loginPage" class="page hidden min-h-screen pt-24 pb-12">
+      <div class="container mx-auto px-6 flex justify-center items-center">
+        <div
+          class="w-full max-w-4xl grid md:grid-cols-2 rounded-2xl overflow-hidden shadow-2xl"
+        >
+          <!-- Left side - Image and branding -->
+          <div class="relative hidden md:block">
+            <img
+              src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-4.0.3"
+              alt="Farmer in field"
+              class="h-full w-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8"
+            >
+              <h2 class="text-3xl font-bold text-white mb-2">Welcome Back</h2>
+              <p class="text-gray-200 mb-6">
+                Continue your journey to smarter, data-driven agriculture
+              </p>
+              <div class="flex items-center space-x-2">
+                <div class="text-primary-dark text-xl">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <p class="text-sm text-white">Secure, encrypted connection</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side - Form -->
+          <div class="dark:bg-secondary-dark bg-white p-8 md:p-10">
+            <div class="flex justify-between items-center mb-8">
+              <h3 class="text-2xl font-bold">Login</h3>
+              <div class="dark:text-primary-dark text-primary-light">
+                <i class="fas fa-seedling text-xl"></i>
+              </div>
+            </div>
+
+            <form class="space-y-5">
+              <div>
+                <label
+                  for="login-email"
+                  class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                  >Email Address</label
+                >
+                <div class="relative">
+                  <span
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 dark:text-gray-400 text-gray-500"
+                  >
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <input
+                    type="email"
+                    id="login-email"
+                    class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                    placeholder="your@email.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="login-password"
+                  class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                  >Password</label
+                >
+                <div class="relative">
+                  <span
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 dark:text-gray-400 text-gray-500"
+                  >
+                    <i class="fas fa-lock"></i>
+                  </span>
+                  <input
+                    type="password"
+                    id="login-password"
+                    class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                    placeholder="Enter your password"
+                  />
+                </div>
+                <div class="flex justify-end mt-1">
+                  <a
+                    href="#"
+                    class="text-xs dark:text-primary-dark text-primary-light hover:underline"
+                    >Forgot password?</a
+                  >
+                </div>
+              </div>
+
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="remember-me"
+                  class="w-4 h-4 border dark:border-gray-700 border-gray-300 rounded dark:bg-dark bg-gray-100 focus:ring-primary-dark"
+                />
+                <label
+                  for="remember-me"
+                  class="ml-2 text-sm dark:text-gray-300 text-gray-700"
+                  >Remember me for 30 days</label
+                >
+              </div>
+
+              <button
+                type="button"
+                onclick="showPage('home'); return false;"
+                class="w-full dark:bg-primary-dark bg-primary-light dark:hover:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-3 px-4 rounded-lg transition-all btn-primary"
+              >
+                Sign In
+              </button>
+            </form>
+
+            <div class="mt-6 text-center">
+              <p class="dark:text-gray-400 text-gray-500">
+                Don't have an account?
+                <a
+                  href="#"
+                  onclick="showPage('register'); return false;"
+                  class="dark:text-primary-dark text-primary-light hover:underline"
+                  >Create account</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Page (Redesigned) -->
+    <section id="registerPage" class="page hidden min-h-screen pt-24 pb-12">
+      <div class="container mx-auto px-6 flex justify-center items-center">
+        <div
+          class="w-full max-w-4xl grid md:grid-cols-2 rounded-2xl overflow-hidden shadow-2xl"
+        >
+          <!-- Left side - Image and branding -->
+          <div class="relative hidden md:block">
+            <img
+              src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3"
+              alt="Agricultural field"
+              class="h-full w-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8"
+            >
+              <h2 class="text-3xl font-bold text-white mb-2">
+                Join AgroPredicta
+              </h2>
+              <p class="text-gray-200 mb-6">
+                Unlock the power of AI for sustainable farming and increased
+                yields
+              </p>
+              <div class="flex items-center space-x-3">
+                <div class="flex -space-x-2">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/44.jpg"
+                    alt="User"
+                    class="w-8 h-8 rounded-full border-2 border-white"
+                  />
+                  <img
+                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    alt="User"
+                    class="w-8 h-8 rounded-full border-2 border-white"
+                  />
+                  <img
+                    src="https://randomuser.me/api/portraits/women/68.jpg"
+                    alt="User"
+                    class="w-8 h-8 rounded-full border-2 border-white"
+                  />
+                </div>
+                <p class="text-sm text-white">
+                  Join 1,000+ farmers already using AgroPredicta
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side - Form -->
+          <div class="dark:bg-secondary-dark bg-white p-8 md:p-10">
+            <div class="flex justify-between items-center mb-8">
+              <h3 class="text-2xl font-bold">Create Account</h3>
+              <div class="dark:text-primary-dark text-primary-light">
+                <i class="fas fa-seedling text-xl"></i>
+              </div>
+            </div>
+
+            <form class="space-y-5">
+              <div>
+                <label
+                  for="fullname"
+                  class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                  >Full Name</label
+                >
+                <div class="relative">
+                  <span
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 dark:text-gray-400 text-gray-500"
+                  >
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <input
+                    type="text"
+                    id="fullname"
+                    class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                    placeholder="John Doe"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                  >Email Address</label
+                >
+                <div class="relative">
+                  <span
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 dark:text-gray-400 text-gray-500"
+                  >
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                    placeholder="your@email.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="password"
+                  class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                  >Password</label
+                >
+                <div class="relative">
+                  <span
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 dark:text-gray-400 text-gray-500"
+                  >
+                    <i class="fas fa-lock"></i>
+                  </span>
+                  <input
+                    type="password"
+                    id="password"
+                    class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                    placeholder="Create password"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="confirm-password"
+                  class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                  >Confirm Password</label
+                >
+                <div class="relative">
+                  <span
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 dark:text-gray-400 text-gray-500"
+                  >
+                    <i class="fas fa-lock"></i>
+                  </span>
+                  <input
+                    type="password"
+                    id="confirm-password"
+                    class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                    placeholder="Confirm password"
+                  />
+                </div>
+              </div>
+
+              
+
+              <button
+                type="button"
+                onclick="showPage('home'); return false;"
+                class="w-full dark:bg-primary-dark bg-primary-light dark:hover:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-3 px-4 rounded-lg transition-all btn-primary"
+              >
+                Create Account
+              </button>
+            </form>
+
+            <div class="mt-6 text-center">
+              <p class="dark:text-gray-400 text-gray-500">
+                Already have an account?
+                <a
+                  href="#"
+                  onclick="showPage('login'); return false;"
+                  class="dark:text-primary-dark text-primary-light hover:underline"
+                  >Sign in</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Page remains the same -->
+
+    <!-- Dashboard Page -->
+    <section id="dashboardPage" class="page hidden min-h-screen pt-24 pb-12">
+      <div class="container mx-auto px-6">
+        <div class="mb-8 flex flex-wrap justify-between items-center">
+          <div>
+            <h2 class="text-3xl font-montserrat font-bold mb-2">Dashboard</h2>
+            <p class="dark:text-gray-300 text-gray-600">
+              Track your predictions and model performance
+            </p>
+          </div>
+          <div class="flex space-x-4 mt-4 lg:mt-0">
+            <button
+              class="dark:border dark:border-gray-600 border border-gray-300 hover:dark:border-primary-dark hover:border-primary-light dark:text-white text-gray-800 hover:dark:text-primary-dark hover:text-primary-light font-medium py-2 px-4 rounded-lg transition-colors flex items-center"
+            >
+              <i class="fas fa-calendar-alt mr-2"></i> Last 30 Days
+            </button>
+            <button
+              onclick="showPage('prediction'); return false;"
+              class="dark:bg-primary-dark bg-primary-light hover:dark:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-2 px-4 rounded-lg transition-all"
+            >
+              <i class="fas fa-plus mr-2"></i> New Prediction
+            </button>
+          </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <p class="dark:text-gray-400 text-gray-500 text-sm">
+                  Total Predictions
+                </p>
+                <h3 class="text-2xl font-bold">47</h3>
+              </div>
+              <div
+                class="dark:bg-primary-dark/20 bg-primary-light/20 p-2 rounded-full"
+              >
+                <i
+                  class="fas fa-chart-line dark:text-primary-dark text-primary-light"
+                ></i>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 text-sm flex items-center mr-2">
+                <i class="fas fa-arrow-up mr-1"></i> 12%
+              </span>
+              <span class="dark:text-gray-400 text-gray-500 text-sm"
+                >vs last month</span
+              >
+            </div>
+          </div>
+
+          <div class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <p class="dark:text-gray-400 text-gray-500 text-sm">
+                  Trained Models
+                </p>
+                <h3 class="text-2xl font-bold">5</h3>
+              </div>
+              <div
+                class="dark:bg-purple-500/20 bg-purple-500/20 p-2 rounded-full"
+              >
+                <i class="fas fa-robot text-purple-500"></i>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 text-sm flex items-center mr-2">
+                <i class="fas fa-arrow-up mr-1"></i> 2
+              </span>
+              <span class="dark:text-gray-400 text-gray-500 text-sm"
+                >new this month</span
+              >
+            </div>
+          </div>
+
+          <div class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <p class="dark:text-gray-400 text-gray-500 text-sm">
+                  Avg. Accuracy
+                </p>
+                <h3 class="text-2xl font-bold">92.4%</h3>
+              </div>
+              <div
+                class="dark:bg-yellow-500/20 bg-yellow-500/20 p-2 rounded-full"
+              >
+                <i class="fas fa-bullseye text-yellow-500"></i>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <span class="text-green-500 text-sm flex items-center mr-2">
+                <i class="fas fa-arrow-up mr-1"></i> 3.2%
+              </span>
+              <span class="dark:text-gray-400 text-gray-500 text-sm"
+                >improvement</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Recent Predictions -->
+          <div class="lg:col-span-2">
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6 mb-8"
+            >
+              <h3 class="font-montserrat font-semibold mb-4">
+                Recent Predictions
+              </h3>
+
+              <div class="overflow-x-auto">
+                <table class="min-w-full">
+                  <thead>
+                    <tr>
+                      <th
+                        class="pb-3 text-left text-xs font-semibold dark:text-gray-400 text-gray-500"
+                      >
+                        Date
+                      </th>
+                      <th
+                        class="pb-3 text-left text-xs font-semibold dark:text-gray-400 text-gray-500"
+                      >
+                        Crop
+                      </th>
+                      <th
+                        class="pb-3 text-left text-xs font-semibold dark:text-gray-400 text-gray-500"
+                      >
+                        Model
+                      </th>
+                      <th
+                        class="pb-3 text-left text-xs font-semibold dark:text-gray-400 text-gray-500"
+                      >
+                        Match
+                      </th>
+                      <th
+                        class="pb-3 text-left text-xs font-semibold dark:text-gray-400 text-gray-500"
+                      >
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b dark:border-gray-700 border-gray-200">
+                      <td class="py-3 text-sm">Oct 12, 2023</td>
+                      <td class="py-3 text-sm font-medium">Wheat</td>
+                      <td class="py-3 text-sm">Random Forest</td>
+                      <td
+                        class="py-3 text-sm dark:text-primary-dark text-primary-light font-medium"
+                      >
+                        92%
+                      </td>
+                      <td class="py-3 text-sm">
+                        <div class="flex space-x-2">
+                          <button
+                            class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button
+                            class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                          >
+                            <i class="fas fa-download"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="border-b dark:border-gray-700 border-gray-200">
+                      <td class="py-3 text-sm">Oct 10, 2023</td>
+                      <td class="py-3 text-sm font-medium">Rice</td>
+                      <td class="py-3 text-sm">XGBoost</td>
+                      <td
+                        class="py-3 text-sm dark:text-primary-dark text-primary-light font-medium"
+                      >
+                        88%
+                      </td>
+                      <td class="py-3 text-sm">
+                        <div class="flex space-x-2">
+                          <button
+                            class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button
+                            class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                          >
+                            <i class="fas fa-download"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="border-b dark:border-gray-700 border-gray-200">
+                      <td class="py-3 text-sm">Oct 7, 2023</td>
+                      <td class="py-3 text-sm font-medium">Cotton</td>
+                      <td class="py-3 text-sm">Random Forest</td>
+                      <td
+                        class="py-3 text-sm dark:text-primary-dark text-primary-light font-medium"
+                      >
+                        95%
+                      </td>
+                      <td class="py-3 text-sm">
+                        <div class="flex space-x-2">
+                          <button
+                            class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button
+                            class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                          >
+                            <i class="fas fa-download"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="border-b dark:border-gray-700 border-gray-200">
+                      <td class="py-3 text-sm">Oct 5, 2023</td>
+                      <td class="py-3 text-sm font-medium">Maize</td>
+                      <td class="py-3 text-sm">Custom Model</td>
+                      <td
+                        class="py-3 text-sm dark:text-primary-dark text-primary-light font-medium"
+                      >
+                        89%
+                      </td>
+                      <td class="py-3 text-sm">
+                        <div class="flex space-x-2">
+                          <button
+                            class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button
+                            class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                          >
+                            <i class="fas fa-download"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="py-3 text-sm">Oct 2, 2023</td>
+                      <td class="py-3 text-sm font-medium">Barley</td>
+                      <td class="py-3 text-sm">XGBoost</td>
+                      <td
+                        class="py-3 text-sm dark:text-primary-dark text-primary-light font-medium"
+                      >
+                        91%
+                      </td>
+                      <td class="py-3 text-sm">
+                        <div class="flex space-x-2">
+                          <button
+                            class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button
+                            class="dark:text-gray-400 text-gray-500 hover:dark:text-primary-dark hover:text-primary-light"
+                          >
+                            <i class="fas fa-download"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="mt-4 text-center">
+                <button
+                  class="dark:text-primary-dark text-primary-light hover:underline font-medium"
+                >
+                  View All Predictions <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Model Performance -->
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6"
+            >
+              <h3 class="font-montserrat font-semibold mb-4">
+                Model Performance
+              </h3>
+
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-sm font-medium">Random Forest</span>
+                    <span
+                      class="text-sm dark:text-primary-dark text-primary-light"
+                      >94%</span
+                    >
+                  </div>
+                  <div class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full">
+                    <div
+                      class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                      style="width: 94%"
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-sm font-medium">XGBoost</span>
+                    <span
+                      class="text-sm dark:text-primary-dark text-primary-light"
+                      >91%</span
+                    >
+                  </div>
+                  <div class="h-2 dark:bg-gray-700 bg-gray-200 rounded-full">
+                    <div
+                      class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                      style="width: 91%"
+                    ></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div>
+            <!-- Top Recommended Crops -->
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6 mb-6"
+            >
+              <h3 class="font-montserrat font-semibold mb-4">
+                Top Recommended Crops
+              </h3>
+
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <div
+                    class="w-2 h-8 dark:bg-primary-dark bg-primary-light rounded-full mr-3"
+                  ></div>
+                  <div class="flex-1">
+                    <div class="flex justify-between">
+                      <span class="font-medium">Wheat</span>
+                      <span class="dark:text-primary-dark text-primary-light"
+                        >28%</span
+                      >
+                    </div>
+                    <div
+                      class="h-1.5 dark:bg-gray-700 bg-gray-200 rounded-full mt-1"
+                    >
+                      <div
+                        class="dark:bg-primary-dark bg-primary-light h-full rounded-full"
+                        style="width: 28%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div
+                    class="w-2 h-8 dark:bg-green-500 bg-green-500 rounded-full mr-3"
+                  ></div>
+                  <div class="flex-1">
+                    <div class="flex justify-between">
+                      <span class="font-medium">Rice</span>
+                      <span class="text-green-500">22%</span>
+                    </div>
+                    <div
+                      class="h-1.5 dark:bg-gray-700 bg-gray-200 rounded-full mt-1"
+                    >
+                      <div
+                        class="bg-green-500 h-full rounded-full"
+                        style="width: 22%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div
+                    class="w-2 h-8 dark:bg-blue-500 bg-blue-500 rounded-full mr-3"
+                  ></div>
+                  <div class="flex-1">
+                    <div class="flex justify-between">
+                      <span class="font-medium">Cotton</span>
+                      <span class="text-blue-500">18%</span>
+                    </div>
+                    <div
+                      class="h-1.5 dark:bg-gray-700 bg-gray-200 rounded-full mt-1"
+                    >
+                      <div
+                        class="bg-blue-500 h-full rounded-full"
+                        style="width: 18%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div
+                    class="w-2 h-8 dark:bg-yellow-500 bg-yellow-500 rounded-full mr-3"
+                  ></div>
+                  <div class="flex-1">
+                    <div class="flex justify-between">
+                      <span class="font-medium">Maize</span>
+                      <span class="text-yellow-500">15%</span>
+                    </div>
+                    <div
+                      class="h-1.5 dark:bg-gray-700 bg-gray-200 rounded-full mt-1"
+                    >
+                      <div
+                        class="bg-yellow-500 h-full rounded-full"
+                        style="width: 15%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div
+                    class="w-2 h-8 dark:bg-purple-500 bg-purple-500 rounded-full mr-3"
+                  ></div>
+                  <div class="flex-1">
+                    <div class="flex justify-between">
+                      <span class="font-medium">Others</span>
+                      <span class="text-purple-500">17%</span>
+                    </div>
+                    <div
+                      class="h-1.5 dark:bg-gray-700 bg-gray-200 rounded-full mt-1"
+                    >
+                      <div
+                        class="bg-purple-500 h-full rounded-full"
+                        style="width: 17%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6"
+            >
+              <h3 class="font-montserrat font-semibold mb-4">Quick Actions</h3>
+
+              <div class="space-y-3">
+                <button
+                  onclick="showPage('prediction'); return false;"
+                  class="w-full flex items-center p-3 dark:bg-dark/50 bg-gray-100 hover:dark:bg-dark/80 hover:bg-gray-200 rounded-lg transition-colors"
+                >
+                  <div
+                    class="w-10 h-10 dark:bg-primary-dark/20 bg-primary-light/20 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <i
+                      class="fas fa-seedling dark:text-primary-dark text-primary-light"
+                    ></i>
+                  </div>
+                  <span class="font-medium">New Prediction</span>
+                </button>
+
+                <button
+                  onclick="showPage('training'); return false;"
+                  class="w-full flex items-center p-3 dark:bg-dark/50 bg-gray-100 hover:dark:bg-dark/80 hover:bg-gray-200 rounded-lg transition-colors"
+                >
+                  <div
+                    class="w-10 h-10 dark:bg-blue-500/20 bg-blue-500/20 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-robot text-blue-500"></i>
+                  </div>
+                  <span class="font-medium">Train New Model</span>
+                </button>
+
+                <button
+                  class="w-full flex items-center p-3 dark:bg-dark/50 bg-gray-100 hover:dark:bg-dark/80 hover:bg-gray-200 rounded-lg transition-colors"
+                >
+                  <div
+                    class="w-10 h-10 dark:bg-yellow-500/20 bg-yellow-500/20 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-file-export text-yellow-500"></i>
+                  </div>
+                  <span class="font-medium">Export Data</span>
+                </button>
+
+                <button
+                  class="w-full flex items-center p-3 dark:bg-dark/50 bg-gray-100 hover:dark:bg-dark/80 hover:bg-gray-200 rounded-lg transition-colors"
+                >
+                  <div
+                    class="w-10 h-10 dark:bg-purple-500/20 bg-purple-500/20 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-cog text-purple-500"></i>
+                  </div>
+                  <span class="font-medium">Settings</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- User Settings Page -->
+    <section id="settingsPage" class="page hidden min-h-screen pt-24 pb-12">
+      <div class="container mx-auto px-6">
+        <div class="mb-8">
+          <h2 class="text-3xl font-montserrat font-bold mb-4">
+            Account Settings
+          </h2>
+          <p class="dark:text-gray-300 text-gray-600">
+            Manage your profile information and preferences
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <!-- Left sidebar -->
+          <div class="lg:col-span-1">
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl overflow-hidden"
+            >
+              <div class="p-6 border-b dark:border-gray-700 border-gray-200">
+                <div class="flex flex-col items-center">
+                  <div
+                    class="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 dark:border-primary-dark border-primary-light"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3"
+                      alt="Profile"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 class="text-lg font-semibold mb-1">John Farmer</h3>
+                  <p class="text-sm dark:text-gray-400 text-gray-500">
+                    john.farmer@example.com
+                  </p>
+                  <button
+                    class="mt-3 text-sm dark:text-primary-dark text-primary-light hover:underline"
+                  >
+                    <i class="fas fa-camera mr-1"></i> Change photo
+                  </button>
+                </div>
+              </div>
+
+              <div class="p-4">
+                <ul class="space-y-1">
+                  <li>
+                    <a
+                      href="#"
+                      class="flex items-center px-4 py-3 rounded-lg dark:bg-dark/30 bg-white/50 dark:text-primary-dark text-primary-light"
+                    >
+                      <i class="fas fa-user-circle w-5 mr-3"></i>
+                      <span>Profile Information</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="flex items-center px-4 py-3 rounded-lg hover:dark:bg-dark/30 hover:bg-white/50 transition-colors"
+                    >
+                      <i class="fas fa-shield-alt w-5 mr-3"></i>
+                      <span>Security</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="flex items-center px-4 py-3 rounded-lg hover:dark:bg-dark/30 hover:bg-white/50 transition-colors"
+                    >
+                      <i class="fas fa-bell w-5 mr-3"></i>
+                      <span>Notifications</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="flex items-center px-4 py-3 rounded-lg hover:dark:bg-dark/30 hover:bg-white/50 text-red-500"
+                    >
+                      <i class="fas fa-sign-out-alt w-5 mr-3"></i>
+                      <span>Logout</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right content area -->
+          <div class="lg:col-span-3">
+            <!-- Profile Information -->
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6 mb-8"
+            >
+              <h3 class="text-xl font-montserrat font-semibold mb-6">
+                Profile Information
+              </h3>
+
+              <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      for="firstName"
+                      class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                      >First Name</label
+                    >
+                    <input
+                      type="text"
+                      id="firstName"
+                      value="John"
+                      class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="lastName"
+                      class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                      >Last Name</label
+                    >
+                    <input
+                      type="text"
+                      id="lastName"
+                      value="Farmer"
+                      class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    value="john.farmer@example.com"
+                    class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    for="phone"
+                    class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="tel"
+                    id="phone"
+                    value="+1 (555) 123-4567"
+                    class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                  />
+                </div>
+
+               
+
+                
+
+                <div>
+                  <label
+                    for="bio"
+                    class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                    >Bio</label
+                  >
+                  <textarea
+                    id="bio"
+                    rows="4"
+                    class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                  >
+Third-generation farmer specializing in sustainable wheat and corn production with 15 years of experience.</textarea
+                  >
+                </div>
+
+                <div class="flex justify-end">
+                  <button
+                    type="button"
+                    class="dark:bg-primary-dark bg-primary-light hover:dark:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-2 px-6 rounded-lg transition-all"
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Security Settings -->
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6 mb-8"
+            >
+              <h3 class="text-xl font-montserrat font-semibold mb-6">
+                Security
+              </h3>
+
+              <div class="mb-8">
+                <h4 class="font-medium mb-4">Change Password</h4>
+                <form class="space-y-4">
+                  <div>
+                    <label
+                      for="currentPassword"
+                      class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                      >Current Password</label
+                    >
+                    <input
+                      type="password"
+                      id="currentPassword"
+                      class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                      placeholder="Enter your current password"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="newPassword"
+                      class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                      >New Password</label
+                    >
+                    <input
+                      type="password"
+                      id="newPassword"
+                      class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                      placeholder="Enter your new password"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="confirmPassword"
+                      class="block text-sm font-medium dark:text-gray-300 text-gray-700 mb-1"
+                      >Confirm New Password</label
+                    >
+                    <input
+                      type="password"
+                      id="confirmPassword"
+                      class="w-full dark:bg-dark/50 bg-gray-50 border dark:border-gray-700 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-dark dark:text-white text-gray-900"
+                      placeholder="Confirm your new password"
+                    />
+                  </div>
+
+                  <div>
+                    <button
+                      type="button"
+                      class="dark:bg-primary-dark bg-primary-light hover:dark:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-2 px-4 rounded-lg transition-all"
+                    >
+                      Update Password
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6 mb-8"
+            >
+              <h3 class="text-xl font-montserrat font-semibold mb-6">
+                Notification Preferences
+              </h3>
+
+              <div class="space-y-4">
+                <div
+                  class="flex items-center justify-between p-4 dark:bg-dark/30 bg-white/30 rounded-lg"
+                >
+                  <div>
+                    <p class="font-medium">Prediction Results</p>
+                    <p class="text-sm dark:text-gray-400 text-gray-500">
+                      Receive notifications when your prediction results are
+                      ready
+                    </p>
+                  </div>
+                  <label
+                    class="relative inline-flex items-center cursor-pointer"
+                  >
+                    <input type="checkbox" checked class="sr-only peer" />
+                    <div
+                      class="w-11 h-6 dark:bg-gray-700 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:dark:bg-primary-dark peer-checked:bg-primary-light"
+                    ></div>
+                  </label>
+                </div>
+
+                <div
+                  class="flex items-center justify-between p-4 dark:bg-dark/30 bg-white/30 rounded-lg"
+                >
+                  <div>
+                    <p class="font-medium">Weather Alerts</p>
+                    <p class="text-sm dark:text-gray-400 text-gray-500">
+                      Get notified about important weather changes for your
+                      crops
+                    </p>
+                  </div>
+                  <label
+                    class="relative inline-flex items-center cursor-pointer"
+                  >
+                    <input type="checkbox" checked class="sr-only peer" />
+                    <div
+                      class="w-11 h-6 dark:bg-gray-700 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:dark:bg-primary-dark peer-checked:bg-primary-light"
+                    ></div>
+                  </label>
+                </div>
+
+                
+
+              <div class="mt-6 flex justify-end">
+                <button
+                  type="button"
+                  class="dark:bg-primary-dark bg-primary-light hover:dark:bg-primary-dark/90 hover:bg-primary-light/90 dark:text-black text-white font-medium py-2 px-6 rounded-lg transition-all"
+                >
+                  Save Preferences
+                </button>
+              </div>
+            </div>
+
+            <!-- Account Deletion -->
+            <div
+              class="dark:bg-secondary-dark bg-secondary-light rounded-xl p-6"
+            >
+              <h3 class="text-xl font-montserrat font-semibold mb-6">
+                Account
+              </h3>
+
+              <div
+                class="p-4 border dark:border-red-800/30 border-red-200 dark:bg-red-900/10 bg-red-50 rounded-lg mb-4"
+              >
+                <h4 class="text-red-500 font-medium mb-2">Delete Account</h4>
+                <p class="text-sm dark:text-gray-300 text-gray-600 mb-4">
+                  Permanently delete your account and all associated data. This
+                  action cannot be undone.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <button
+                    class="dark:bg-red-700/20 bg-red-100 border dark:border-red-600 border-red-300 dark:text-red-400 text-red-600 px-4 py-2 rounded-lg font-medium hover:dark:bg-red-700/30 hover:bg-red-200 transition-colors"
+                  >
+                    Delete My Account
+                  </button>
+                  <button
+                    class="dark:bg-dark/30 bg-white/30 dark:text-gray-300 text-gray-600 px-4 py-2 rounded-lg font-medium hover:dark:bg-dark/40 hover:bg-white/40 transition-colors"
+                  >
+                    Export My Data
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </body>
+    </html>

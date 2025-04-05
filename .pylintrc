@@ -1,0 +1,6 @@
+[MASTER]
+load-plugins=pylint_mongoengine
+ignore=migrations
+
+[MESSAGES CONTROL]
+disable=missing-docstring,too-few-public-methods,import-error 

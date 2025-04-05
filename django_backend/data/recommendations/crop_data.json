@@ -1,0 +1,2546 @@
+{
+  "amaranthus": {
+    "image": "https://images.unsplash.com/photo-1634187098734-289a8ef4abd4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW1hcmFudGh1c3xlbnwwfHwwfHx8MA%3D%3D",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "500-1500mm",
+      "Growth Period": "4-6 weeks (leaf harvest), 3-4 months (grain)",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Amaranthus is a fast-growing leafy vegetable or grain crop, rich in protein and iron. Tolerates drought and poor soils."
+  },
+  "greenbanana": {
+    "image": "https://images.unsplash.com/photo-1610911434407-54dbc487af49?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "growingConditions": {
+      "Temperature": "26-30°C",
+      "Rainfall": "1200-2500mm",
+      "Growth Period": "9-12 months to harvest",
+      "Optimal pH": "5.5-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "200-250 kg/ha",
+      "phosphorus": "30-50 kg/ha",
+      "potassium": "300-400 kg/ha",
+      "ph": "5.5-7.0"
+    },
+    "description": "Green bananas are starchy, unripe bananas used for cooking. Thrives in tropical climates with high humidity."
+  },
+  "ladiesfinger": {
+    "image": "https://healthwire.pk/wp-content/uploads/2022/03/lady-finger-benefits.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "1000-1500mm",
+      "Growth Period": "50-60 days to harvest",
+      "Optimal pH": "6.0-6.8"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "50-80 kg/ha",
+      "ph": "6.0-6.8"
+    },
+    "description": "Ladies finger (okra) is a warm-season vegetable prized for its edible green pods. Rich in fiber and vitamin C."
+  },
+  "bittergourd": {
+    "image": "https://kj1bcdn.b-cdn.net/media/52143/bitterplusmelon.jpg",
+    "growingConditions": {
+      "Temperature": "24-30°C",
+      "Rainfall": "1500-2000mm",
+      "Growth Period": "55-60 days to harvest",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "60-80 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Bitter gourd is a tropical vine with warty, bitter fruits used in traditional medicine and cooking."
+  },
+  "blackpepper": {
+    "image": "https://plus.unsplash.com/premium_photo-1726072357017-0af7b90a463d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "growingConditions": {
+      "Temperature": "23-32°C",
+      "Rainfall": "2000-3000mm",
+      "Growth Period": "3-4 years to first harvest, productive for 12-20 years",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-150 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "150-200 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Black pepper is a flowering vine cultivated for its pungent dried berries (peppercorns), used as a spice worldwide."
+  },
+  "bottlegourd": {
+    "image": "https://cdn.pixabay.com/photo/2022/08/09/11/16/organic-7374764_1280.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "600-1500mm",
+      "Growth Period": "60-70 days to harvest",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "50-70 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "50-70 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Bottle gourd is a climbing vine producing large, edible fruits often used in soups and stews. Drought-tolerant."
+  },
+  "brinjal": {
+    "image": "https://cdn.pixabay.com/photo/2017/09/14/16/46/aubergine-2749627_1280.jpg",
+    "growingConditions": {
+      "Temperature": "22-30°C",
+      "Rainfall": "600-1200mm",
+      "Growth Period": "70-85 days to harvest",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Brinjal (eggplant) is a heat-loving vegetable with glossy purple fruits, rich in antioxidants and fiber."
+  },
+  "cabbage": {
+    "image": "https://cdn.pixabay.com/photo/2018/02/15/17/07/leaf-3155791_1280.jpg",
+    "growingConditions": {
+      "Temperature": "15-20°C",
+      "Rainfall": "350-500mm",
+      "Growth Period": "70-100 days to harvest",
+      "Optimal pH": "6.0-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "120-150 kg/ha",
+      "phosphorus": "50-70 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "6.0-6.5"
+    },
+    "description": "Cabbage is a cool-season leafy vegetable forming dense heads. High in vitamin K and C."
+  },
+  "carrot": {
+    "image": "https://diy.sndimg.com/content/dam/images/diy/fullset/2018/5/3/0/shutterstock_97404485_Iakov-Filimonov_harvested-carrots.jpg.rend.hgtvcom.1280.853.suffix/1525379049839.jpeg",
+    "growingConditions": {
+      "Temperature": "15-20°C",
+      "Rainfall": "500-800mm",
+      "Growth Period": "70-80 days to harvest",
+      "Optimal pH": "6.0-6.8"
+    },
+    "soilRequirements": {
+      "nitrogen": "50-70 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "6.0-6.8"
+    },
+    "description": "Carrot is a root vegetable rich in beta-carotene. Prefers loose, sandy soils for straight root development."
+  },
+  "cauliflower": {
+    "image": "https://www.thespruce.com/thmb/7qc67xZ3hcMwt3hVZkHctwEJoKA=/4592x3064/filters:no_upscale():max_bytes(150000):strip_icc()/head-of-cauliflower-658555330-5b39ab28c9e77c0037bbef3e.jpg",
+    "growingConditions": {
+      "Temperature": "15-22°C",
+      "Rainfall": "350-500mm",
+      "Growth Period": "90-120 days to harvest",
+      "Optimal pH": "6.0-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "150-200 kg/ha",
+      "phosphorus": "70-100 kg/ha",
+      "potassium": "150-200 kg/ha",
+      "ph": "6.0-6.5"
+    },
+    "description": "Cauliflower is a cool-season crop grown for its edible white curd. Requires consistent moisture."
+  },
+  "clusterbeans": {
+    "image": "https://th.bing.com/th/id/R.e202a7d3096d6d897fa9de4009e783bf?rik=KYoNw6iNNzzgZw&riu=http%3a%2f%2fwww.hdsfoods.co.uk%2fwp-content%2fuploads%2f2014%2f01%2fguwar-cluster-beans.png&ehk=HbUvcYe8uzybxSN02M2w57llCYf8ETKKJdb02lMm2LM%3d&risl=&pid=ImgRaw&r=0",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "60-70 days to harvest",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "15-20 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Cluster beans (guar) are drought-resistant legumes used as vegetables or for gum production. Tolerates poor soils."
+  },
+  "coconut": {
+    "image": "https://foodprint.org/wp-content/uploads/2018/10/AdobeStock_210031864-e1539129752858.jpeg",
+    "growingConditions": {
+      "Temperature": "27-32°C",
+      "Rainfall": "1500-2500mm",
+      "Growth Period": "5-7 years to first harvest, productive for 60-80 years",
+      "Optimal pH": "5.0-8.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-150 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "200-300 kg/ha",
+      "ph": "5.0-8.0"
+    },
+    "description": "Coconut palm is a tropical tree producing versatile fruits used for water, oil, and fiber. Requires coastal or humid climates."
+  },
+  "colacasia": {
+    "image": "https://costaverdeimports.com/wp-content/uploads/2018/10/Colocasia-3.jpg",
+    "growingConditions": {
+      "Temperature": "20-35°C",
+      "Rainfall": "1500-2000mm",
+      "Growth Period": "6-8 months to harvest",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Colacasia (taro) is grown for its starchy corms and edible leaves. Thrives in waterlogged or marshy soils."
+  },
+  "onion": {
+    "image": "https://i.fbcd.co/products/resized/resized-750-500/c-1000-designbundle-onion-soil-3-04-09-ce32359f13b1ac816779ce8890f3f0881c104cedb357f220bafb70e4dc7a6760.jpg",
+    "growingConditions": {
+      "Temperature": "12-25°C",
+      "Rainfall": "500-700mm",
+      "Growth Period": "90-120 days to harvest",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-120 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Onion is a bulb crop requiring cool temperatures early and warm weather during bulb formation. Rich in flavonoids."
+  },
+  "potato": {
+    "image": "https://cdn.pixabay.com/photo/2015/10/12/13/26/potato-983788_1280.jpg",
+    "growingConditions": {
+      "Temperature": "15-20°C",
+      "Rainfall": "500-700mm",
+      "Growth Period": "90-120 days to harvest",
+      "Optimal pH": "5.0-6.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "120-150 kg/ha",
+      "phosphorus": "80-100 kg/ha",
+      "potassium": "150-200 kg/ha",
+      "ph": "5.0-6.0"
+    },
+    "description": "Potato is a starchy tuber crop grown worldwide. Prefers well-drained, loose soils and cool climates."
+  },
+  "tomato": {
+    "image": "https://www.thespruce.com/thmb/KCJGOMwG3KI5ZhjHP0zDGqMclqk=/4200x0/filters:no_upscale():max_bytes(150000):strip_icc()/tomato-plant-7488122_Hero1A-0a34969ad372497ea344d0cbfa026484.jpg",
+    "growingConditions": {
+      "Temperature": "20-27°C",
+      "Rainfall": "600-900mm",
+      "Growth Period": "90-110 days to harvest",
+      "Optimal pH": "6.0-6.8"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-120 kg/ha",
+      "phosphorus": "50-70 kg/ha",
+      "potassium": "150-200 kg/ha",
+      "ph": "6.0-6.8"
+    },
+    "description": "Tomato is a warm-season fruit vegetable rich in lycopene. Susceptible to frost and waterlogging."
+  },
+  "bengalgram": {
+    "image": "https://hirutexport.com/wp-content/uploads/2020/03/Showa-Type-3.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "90-120 days to harvest",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes atmospheric N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Bengal gram (chickpea) is a drought-tolerant pulse crop high in protein. Fixes nitrogen in soil."
+  },
+  "jowar": {
+    "image": "https://www.healthifyme.com/blog/wp-content/uploads/2017/01/Jowar-2-1.jpg",
+    "growingConditions": {
+      "Temperature": "25-32°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "90-120 days to harvest",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Jowar (sorghum) is a drought-resistant cereal grain used for food, fodder, and biofuel. Tolerates poor soils."
+  },
+  "wheat": {
+    "image": "https://wallup.net/wp-content/uploads/2016/07/19/21149-field-sunset-macro-wheat-depth_of_field.jpg",
+    "growingConditions": {
+      "Temperature": "15-24°C (optimal for growth)",
+      "Rainfall": "500-800mm (annual, well-distributed)",
+      "Growth Period": "90-120 days (spring wheat), 180-250 days (winter wheat)",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-150 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "80-120 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Wheat is a staple cereal crop grown globally for its grain, used in flour production. It includes winter and spring varieties, with winter wheat planted in fall and harvested in early summer, while spring wheat is planted in spring and harvested in late summer. Wheat is highly adaptable but thrives in temperate climates with well-drained soils."
+  },
+  "paddy": {
+    "image": "https://images.unsplash.com/photo-1599328580087-15c9dab481f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8M3x8cGFkZHklMjBmaWVsZHx8MHx8fHwxNjI4ODEzNTk3&ixlib=rb-1.2.1&q=80&w=1080",
+    "growingConditions": {
+      "Temperature": "20-37°C (optimal 25-32°C)",
+      "Rainfall": "1000-2000mm (requires standing water)",
+      "Growth Period": "90-180 days (varies by variety)",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-120 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Paddy (rice) is a semi-aquatic cereal crop grown in flooded fields. It's a staple food for half the world's population."
+  },
+  "lentil": {
+    "image": "https://farmhouseguide.com/wp-content/uploads/2022/05/Dry-Organic-Green-Lentils-in-wooden-bowl-ee220510.jpg",
+    "growingConditions": {
+      "Temperature": "15-25°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "110-130 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes atmospheric N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Lentil is a protein-rich pulse crop that improves soil fertility through nitrogen fixation."
+  },
+  "rice": {
+    "image": "https://maharanirice.in/wp-content/uploads/2022/03/How-can-I-start-my-own-rice-export-business.jpg",
+    "growingConditions": {
+      "Temperature": "20-37°C",
+      "Rainfall": "1000-2000mm",
+      "Growth Period": "90-180 days",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-120 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Rice is the world's most important staple food crop, typically grown in flooded paddies."
+  },
+  "cucumber": {
+    "image": "https://www.greengardentribe.com/wp-content/uploads/2021/07/shutterstock_794145808-scaled.jpg",
+    "growingConditions": {
+      "Temperature": "18-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "50-70 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Cucumber is a warm-season vegetable grown for its crisp, refreshing fruits."
+  },
+  "fieldpea": {
+    "image": "https://www.thespruce.com/thmb/5HmAm18irYlJJyr2qxN2WThHLwk=/5750x3834/filters:no_upscale():max_bytes(150000):strip_icc()/garden-vs-snow-and-sugar-snap-1403487-01-75756cadab74407c8d2db846f2f5ed8e.jpg",
+    "growingConditions": {
+      "Temperature": "10-22°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "90-110 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Field pea is a cool-season pulse crop that improves soil fertility."
+  },
+  "frenchbeans": {
+    "image": "https://www.lovethegarden.com/sites/default/files/content/articles/UK_harvested-french-beans.jpg",
+    "growingConditions": {
+      "Temperature": "18-24°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "50-60 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "40-60 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "60-80 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "French beans are tender, quick-growing vegetables harvested young."
+  },
+  "greenchilli": {
+    "image": "https://static.vecteezy.com/system/resources/previews/020/700/127/large_2x/green-chili-pepper-plant-on-field-agriculture-in-garden-free-photo.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1200mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-6.8"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-6.8"
+    },
+    "description": "Green chilli is a pungent pepper used fresh or dried as a spice."
+  },
+  "knoolkhol": {
+    "image": "https://www.gardenhunt.com/wp-content/uploads/2020/02/Knol-Khol-4.jpg",
+    "growingConditions": {
+      "Temperature": "15-20°C",
+      "Rainfall": "350-500mm",
+      "Growth Period": "60-70 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Knol khol is a cool-season vegetable grown for its swollen stem."
+  },
+  "pumpkin": {
+    "image": "https://s.yimg.com/uu/api/res/1.2/OMOdGg6bzjblEmJn.MFTHw--~B/aD0yNjM1O3c9Mzk0NjtzbT0xO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/patch_hosted_articles_700/6727f10e6ea0c1008010e8caa31f78da",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-6.8"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-6.8"
+    },
+    "description": "Pumpkin is a warm-season vine crop grown for its large, nutritious fruits."
+  },
+  "raddish": {
+    "image": "https://i0.wp.com/infoyoushouldknow.net/wp-content/uploads/2017/07/Raddish.jpg",
+    "growingConditions": {
+      "Temperature": "10-18°C",
+      "Rainfall": "350-500mm",
+      "Growth Period": "25-45 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "40-60 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "50-70 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Radish is a fast-growing root vegetable with a pungent flavor."
+  },
+  "blackgram": {
+    "image": "https://superindianfoods.com/wp-content/uploads/2022/11/Black-Gram-main.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "600-800mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Black gram is a drought-resistant pulse crop high in protein."
+  },
+  "greengram": {
+    "image": "https://smartlady.lk/wp-content/uploads/2019/09/Green-gram-e1568127677761.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "600-800mm",
+      "Growth Period": "75-90 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Green gram (mung bean) is a short-duration, protein-rich pulse crop."
+  },
+  "jute": {
+    "image": "https://www.sahapedia.org/sites/default/files/Jute-Species_Corchorus%20Capsularis-(Sada%20pat_White%20Jute).jpg",
+    "growingConditions": {
+      "Temperature": "24-37°C",
+      "Rainfall": "1500-2500mm",
+      "Growth Period": "120-150 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Jute is a fiber crop used for making burlap and hessian cloth."
+  },
+  "mustard": {
+    "image": "https://www.tastingtable.com/img/gallery/how-mustard-got-its-name/l-intro-1658869121.jpg",
+    "growingConditions": {
+      "Temperature": "10-25°C",
+      "Rainfall": "350-500mm",
+      "Growth Period": "110-140 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Mustard is an oilseed crop grown for its seeds and leaves."
+  },
+  "garlic": {
+    "image": "https://www.businessinsider.in/photo/78396130/5-health-benefits-of-garlic-and-how-much-to-add-to-your-diet.jpg?imgsize=100599",
+    "growingConditions": {
+      "Temperature": "13-24°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "150-180 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-120 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Garlic is a bulb crop valued for its culinary and medicinal properties."
+  },
+  "masurdal": {
+    "image": "https://www.teaforturmeric.com/wp-content/uploads/2016/11/DSC1820.jpg",
+    "growingConditions": {
+      "Temperature": "15-25°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "110-130 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Masur dal (red lentil) is a protein-rich pulse crop that improves soil fertility."
+  },
+  "ridgegourd": {
+    "image": "https://dhcrop.bsmrau.net/wp-content/uploads/2016/06/Ridge-gourd-cultivation-900x605.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "600-1500mm",
+      "Growth Period": "60-75 days",
+      "Optimal pH": "5.5-6.8"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "5.5-6.8"
+    },
+    "description": "Ridge gourd is a fast-growing vine vegetable, rich in fiber and vitamins. Used in culinary dishes and as a natural sponge when mature."
+  },
+  "arecanut": {
+    "image": "https://www.sriherbs.com/wp-content/uploads/2021/02/areca-tree-4754234_1920.jpg",
+    "growingConditions": {
+      "Temperature": "14-36°C",
+      "Rainfall": "1500-3000mm",
+      "Growth Period": "4-6 years to first harvest",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-150 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "150-200 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Arecanut (betel nut) is a tropical palm crop, primarily grown for its nuts used in traditional practices. Thrives in humid climates."
+  },
+  "redgram": {
+    "image": "https://static.wixstatic.com/media/991416_bff5af080611494596117eb18b23161f~mv2.webp",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "120-180 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Red gram (pigeon pea) is a drought-resistant pulse crop, high in protein and fixes nitrogen in soil."
+  },
+  "maize": {
+    "image": "https://www.agro.basf.co.ke/common/crops/corn_1540x866.jpg",
+    "growingConditions": {
+      "Temperature": "18-27°C",
+      "Rainfall": "500-800mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "5.8-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "120-150 kg/ha",
+      "phosphorus": "60-80 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "5.8-7.0"
+    },
+    "description": "Maize is a staple cereal crop used for food, feed, and industrial purposes. Requires well-drained fertile soils."
+  },
+  "drychillies": {
+    "image": "https://horticulture.co.uk/wp-content/uploads/2021/05/drychillies-header.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1200mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-6.8"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-6.8"
+    },
+    "description": "Dry chillies are pungent peppers used as spices. Require warm temperatures and well-drained soils."
+  },
+  "groundnut": {
+    "image": "https://cdn.wikifarmer.com/wp-content/uploads/2023/07/Groundnut-Plant-Information-History-Uses-and-Nutrition-Value.jpg",
+    "growingConditions": {
+      "Temperature": "25-30°C",
+      "Rainfall": "500-700mm",
+      "Growth Period": "100-130 days",
+      "Optimal pH": "5.5-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "50-60 kg/ha",
+      "ph": "5.5-7.0"
+    },
+    "description": "Groundnut (peanut) is an oilseed crop that improves soil fertility through nitrogen fixation."
+  },
+  "capsicum": {
+    "image": "https://skyperma.com/wp-content/uploads/2022/04/Capsicum-plant-4-1024x744.jpg",
+    "growingConditions": {
+      "Temperature": "18-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-6.8"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-120 kg/ha",
+      "phosphorus": "50-70 kg/ha",
+      "potassium": "120-150 kg/ha",
+      "ph": "6.0-6.8"
+    },
+    "description": "Capsicum (bell pepper) is a warm-season vegetable rich in vitamins A and C. Prefers well-drained loamy soils."
+  },
+  "guar": {
+    "image": "https://www.guarresources.com/wp-content/uploads/2020/09/Guar-Resources-Guar-Field-Beans-1200x800.jpeg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "90-110 days",
+      "Optimal pH": "7.0-8.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes N)",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "7.0-8.5"
+    },
+    "description": "Guar (cluster bean) is a drought-resistant legume used for vegetable and gum production. Tolerates poor soils."
+  },
+  "lemon": {
+    "image": "https://cdn.mos.cms.futurecdn.net/WMYr2CAVooYqwbQqg2LjSN.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "700-1200mm",
+      "Growth Period": "3-5 years to first harvest",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "200-250 kg/ha",
+      "phosphorus": "50-100 kg/ha",
+      "potassium": "200-300 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Lemon is a citrus fruit tree grown for its acidic fruits. Requires well-drained soils and regular pruning."
+  },
+  "bajra": {
+    "image": "https://i.pinimg.com/originals/89/0f/b2/890fb29b481e38c804b5d3b30fa385e3.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "80-100 days",
+      "Optimal pH": "6.5-8.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "6.5-8.0"
+    },
+    "description": "Bajra (pearl millet) is a drought-resistant cereal grain used for food and fodder. Tolerates poor soils."
+  },
+  "castorseed": {
+    "image": "https://cdn.pixabay.com/photo/2017/07/25/04/15/castor-2536904_1280.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "500-750mm",
+      "Growth Period": "150-180 days",
+      "Optimal pH": "5.0-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "5.0-6.5"
+    },
+    "description": "Castor seed is an oilseed crop grown for industrial uses. Requires well-drained soils and warm temperatures."
+  },
+  "coriander": {
+    "image": "https://horticulture.co.uk/wp-content/uploads/2021/04/coriander-header-1600x784.jpg",
+    "growingConditions": {
+      "Temperature": "15-25°C",
+      "Rainfall": "300-500mm",
+      "Growth Period": "90-110 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "40-60 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Coriander is an aromatic herb used for leaves and seeds. Prefers cool weather and well-drained soils."
+  },
+  "cowpea": {
+    "image": "https://afrimash.com/wp-content/uploads/2021/08/Cowpea-Seed-1.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "80-100 days",
+      "Optimal pH": "5.5-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "5.5-7.0"
+    },
+    "description": "Cowpea is a drought-tolerant legume used for vegetable and fodder. Improves soil fertility through nitrogen fixation."
+  },
+  "drumstick": {
+    "image": "https://www.healthifyme.com/blog/wp-content/uploads/2022/03/shutterstock_1663988527-1-1024x682.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "800-1200mm",
+      "Growth Period": "8-12 months to first harvest",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "50-70 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "50-70 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Drumstick (moringa) is a fast-growing tree valued for its nutritious leaves and pods. Drought-resistant."
+  },
+  "elephantyam": {
+    "image": "https://i1.wp.com/www.theayurveda.org/wp-content/uploads/2016/10/Elephant-foot-yam.png?fit=800%2C525&ssl=1",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "1500-2000mm",
+      "Growth Period": "8-10 months",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Elephant yam is a tropical tuber crop grown for its starchy corms. Thrives in humid conditions."
+  },
+  "ginger": {
+    "image": "https://foodrevolution.org/wp-content/uploads/blog-featured-ginger_benefits-20171220-1630.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "1500-3000mm",
+      "Growth Period": "8-10 months",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "75-100 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Ginger is a rhizomatous spice crop requiring warm, humid conditions. Prefers well-drained loamy soils."
+  },
+  "methileaves": {
+    "image": "https://cdn.pixabay.com/photo/2017/11/09/10/08/fenugreek-2932921_960_720.jpg",
+    "growingConditions": {
+      "Temperature": "10-30°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "20-30 days (for leaves)",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "40-60 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Methi leaves (fenugreek) are aromatic greens used in cooking. Fast-growing and prefers cool weather."
+  },
+  "greenonion": {
+    "image": "https://www.thespruceeats.com/thmb/FA--iKEAhsZT0YydV43bnhrPcik=/2124x1411/filters:fill(auto,1)/GettyImages-672264201-5c8bcf3e46e0fb000146acf0.jpg",
+    "growingConditions": {
+      "Temperature": "13-24°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "60-80 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-120 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Green onion (spring onion) is a bulb crop harvested young for its leaves. Requires fertile, well-drained soil."
+  },
+  "peascod": {
+    "image": "https://media.istockphoto.com/photos/green-pea-picture-id177019507?k=20&m=177019507&s=612x612&w=0&h=bkSDmpdUM7wUauYCKZgTaLfrIS43XLzZdpp7LWfMEuw=",
+    "growingConditions": {
+      "Temperature": "10-22°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "90-110 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Peas cod (garden pea) is a cool-season legume grown for its edible pods and seeds."
+  },
+  "pigeonpea": {
+    "image": "https://www.neverendingfood.org/wp-content/uploads/2023/04/115.JPGa_-scaled.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "120-180 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha (fixes N)",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Pigeon pea is a drought-resistant pulse crop, high in protein and improves soil fertility."
+  },
+  "spongegourd": {
+    "image": "https://www.sahajaseeds.com/wp-content/uploads/2022/11/Sponge-Gourd-White-600x445.jpeg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "600-1500mm",
+      "Growth Period": "60-90 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Sponge gourd (luffa) is a vine vegetable used young for cooking and mature as a natural sponge."
+  },
+  "suratbeans": {
+    "image": "https://thumbs.dreamstime.com/b/red-adzuki-beans-square-wooden-measuring-cup-organic-healthy-food-concept-176052520.jpg",
+    "growingConditions": {
+      "Temperature": "15-24°C",
+      "Rainfall": "300-500mm",
+      "Growth Period": "120-150 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Surat beans, also known as broad beans, are cool-season legumes that improve soil fertility through nitrogen fixation."
+  },
+  "sweetpotato": {
+    "image": "https://girlssoccernetwork.com/wp-content/uploads/2020/11/sweet-potato-resized.jpeg",
+    "growingConditions": {
+      "Temperature": "29-35°C",
+      "Rainfall": "750-1000mm",
+      "Growth Period": "90-150 days",
+      "Optimal pH": "5.8-6.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "110 kg/ha",
+      "phosphorus": "15 kg/ha",
+      "potassium": "150 kg/ha",
+      "ph": "5.8-6.0"
+    },
+    "description": "Sweet potato is a warm-season root crop that thrives in humid conditions and well-drained soils."
+  },
+  "tinda": {
+    "image": "https://www.netmeds.com/images/cms/wysiwyg/blog/2020/04/1586508650_Tinda_big_1.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "500-700mm",
+      "Growth Period": "70-90 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Tinda, or round gourd, is a warm-season vegetable that prefers sandy loam soils rich in organic matter."
+  },
+  "clusterbeans": {
+    "image": "https://5.imimg.com/data5/AX/HV/MY-10247618/cluster-beans-1000x1000.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "300-500mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Cluster beans, or guar, are drought-tolerant legumes used for their seeds and as green manure."
+  },
+  "cotton": {
+    "image": "https://today.tamu.edu/wp-content/uploads/2022/07/GettyImages-1320201171.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1200mm",
+      "Growth Period": "150-180 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Cotton is a fiber crop that thrives in warm climates and well-drained soils."
+  },
+  "wheat": {
+    "image": "https://foodgardening.mequoda.com/wp-content/uploads/2021/05/Wheat-grown-in-open-ground.jpg",
+    "growingConditions": {
+      "Temperature": "10-24°C",
+      "Rainfall": "450-650mm",
+      "Growth Period": "100-130 days (spring wheat), 180-250 days (winter wheat)",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-150 kg/ha",
+      "phosphorus": "50-70 kg/ha",
+      "potassium": "30-50 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Wheat is a staple cereal crop that grows well in temperate regions with well-drained soils."
+  },
+  "chholia": {
+    "image": "https://4.imimg.com/data4/BY/WW/ANDROID-19632655/product-1000x1000.jpeg",
+    "growingConditions": {
+      "Temperature": "15-25°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Chholia, or green chickpeas, are cool-season legumes harvested for their immature seeds."
+  },
+  "littlegourd": {
+    "image": "https://s.ecrater.com/stores/424928/5a5b9d222f29f_424928b.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "500-700mm",
+      "Growth Period": "70-90 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "40-60 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Little gourd, also known as ivy gourd, is a perennial vine grown for its edible fruits."
+  },
+  "roundgourd": {
+    "image": "https://img.freepik.com/premium-photo/bottle-gourd-winter-melon_36022-89.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal soil temperature: 10-40°C (50-104°F)",
+      "Rainfall": "Requires consistent moisture but avoid waterlogging",
+      "Growth Period": "Germinates in 7-15 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "Moderate; ensure soil is rich in organic matter",
+      "phosphorus": "Moderate; incorporate compost or well-rotted manure",
+      "potassium": "Moderate; balanced fertilization recommended",
+      "ph": "6.0-7.0"
+    },
+    "description": "Round gourd, also known as tinda, thrives in loamy soil rich in organic matter. Best grown during monsoon or summer with optimal soil temperatures between 10-40°C. Germination occurs within 7-15 days. :contentReference[oaicite:2]{index=2}"
+  },
+  "leafyvegetable": {
+    "image": "https://www.nutritionfact.in/wp-content/uploads/2022/02/glv.jpg",
+    "growingConditions": {
+      "Temperature": "Prefer cooler temperatures; plant as soon as soil can be worked",
+      "Rainfall": "Consistent moisture required; avoid overly wet soil",
+      "Growth Period": "Varies by species; generally fast-growing",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "75-150 pounds per acre",
+      "phosphorus": "100-200 pounds per acre",
+      "potassium": "50-150 pounds per acre",
+      "ph": "6.5-7.5"
+    },
+    "description": "Leafy greens grow best in well-drained soils rich in organic matter. Incorporate compost to enhance fertility. :contentReference[oaicite:3]{index=3}"
+  },
+  "mint": {
+    "image": "https://positivebloom.com/wp-content/uploads/2022/10/strawberry-mint-plant-or-Mentha-Spicata.jpg",
+    "growingConditions": {
+      "Temperature": "Thrives in a range of temperatures; plant in spring or autumn",
+      "Rainfall": "Requires consistent moisture; avoid waterlogged conditions",
+      "Growth Period": "Perennial; can be harvested regularly once established",
+      "Optimal pH": "Close to 7"
+    },
+    "soilRequirements": {
+      "nitrogen": "Not specified; ensure soil is fertile",
+      "phosphorus": "Not specified; incorporate organic matter",
+      "potassium": "Not specified; balanced soil recommended",
+      "ph": "Close to 7"
+    },
+    "description": "Mint prefers moist, well-drained, and fertile soil. It's best planted in spring or autumn and can tolerate full sun to partial shade. :contentReference[oaicite:4]{index=4}"
+  },
+  "papaya": {
+    "image": "https://housing.com/news/wp-content/uploads/2022/11/PAPAYA-TREE-FEATURE-compressed.jpg",
+    "growingConditions": {
+      "Temperature": "Thrives in tropical climates; sensitive to frost",
+      "Rainfall": "Prefers well-distributed rainfall; avoid waterlogged conditions",
+      "Growth Period": "Fruits within 6-12 months after planting",
+      "Optimal pH": "6.0-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "Moderate; incorporate organic matter",
+      "phosphorus": "Moderate; ensure soil fertility",
+      "potassium": "Moderate; balanced nutrients required",
+      "ph": "6.0-6.5"
+    },
+    "description": "Papaya grows well in well-drained sandy loam soils rich in organic matter. The ideal soil pH is between 6.0 and 6.5. :contentReference[oaicite:5]{index=5}"
+  },
+  "spinach": {
+    "image": "http://www.photos-public-domain.com/wp-content/uploads/2012/03/spinach.jpg",
+    "growingConditions": {
+      "Temperature": "Best between 7-24°C (45-75°F); thrives in cooler temperatures",
+      "Rainfall": "Requires consistent moisture; avoid saturated soils",
+      "Growth Period": "Ready for harvest in about 40 days",
+      "Optimal pH": "6.5-8.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "Adequate levels; incorporate compost or well-rotted manure",
+      "phosphorus": "Apply based on soil test recommendations",
+      "potassium": "Ensure sufficient levels; avoid deficiencies",
+      "ph": "6.5-8.0"
+    },
+    "description": "Spinach grows most quickly in well-drained soil rich in organic matter. Prepare soil by mixing in compost before planting. :contentReference[oaicite:6]{index=6}"
+  },
+  "parval": {
+    "image": "https://static.freshtohome.com/media/catalog/product/cache/1/image/18ae109e34f485bd0b0c075abec96b2e/p/a/parval.jpg",
+    "growingConditions": {
+      "Temperature": "Thrives in warm and humid climates; optimal between 25-35°C",
+      "Rainfall": "Requires adequate moisture; avoid waterlogged conditions",
+      "Growth Period": "Perennial; starts yielding in the second year",
+      "Optimal pH": "5.8-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "Moderate; ensure soil has good organic matter",
+      "phosphorus": "Adequate levels; incorporate compost",
+      "potassium": "Balanced nutrients required",
+      "ph": "5.8-7.5"
+    },
+    "description": "Pointed gourd, known as parval, grows best in sandy loam to loam soil with good drainage and organic matter. The ideal soil pH is between 5.8 and 7.5. :contentReference[oaicite:7]{index=7}"
+  },
+  "banana": {
+    "image": "https://www.housedigest.com/img/gallery/banana-tree-everything-you-should-know-before-planting/l-intro-1656509884.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 27°C; tolerates 10-40°C",
+      "Rainfall": "Requires high humidity and regular rainfall; sensitive to drought",
+      "Growth Period": "Perennial; yields 12-18 months after planting depending on variety",
+      "Optimal pH": "6.0-8.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "High; essential for vigorous growth",
+      "phosphorus": "Adequate levels; supports root development",
+      "potassium": "High; crucial for fruit quality",
+      "ph": "6.0-8.0"
+    },
+    "description": "Bananas thrive in tropical climates with warm temperatures and high humidity. They require fertile, well-drained soils rich in organic matter. Varieties like Dwarf Cavendish and Poovan are popular for their high yield and quality fruits. "
+  },
+  "ziziphus": {
+    "image": "https://tint.creativemarket.com/gnN_hGENX6hUgHTod7hg0bRShb1Qjt-G7Fx9lyLhlQc/width:3640/height:2410/gravity:nowe/rt:fill-down/el:1/preset:cm_watermark_retina/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzExMTIvMTExMjIvMTExMjIzNTAvZmlsMDU2MDgtby5qcGc",
+    "growingConditions": {
+      "Temperature": "Thrives in hot, dry climates; optimal around 35°C",
+      "Rainfall": "Low water requirement; drought-tolerant",
+      "Growth Period": "Perennial; starts yielding in the third year",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "Moderate; benefits from organic matter",
+      "phosphorus": "Adequate levels; supports fruiting",
+      "potassium": "Balanced nutrients required",
+      "ph": "6.0-7.5"
+    },
+    "description": "Zizyphus, commonly known as jujube, is a hardy fruit that grows well in arid regions. It prefers sandy loam soils with good drainage and can withstand drought conditions once established. "
+  },
+  "grapes": {
+    "image": "https://images.alphacoders.com/465/465168.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25-30°C; requires a warm growing season",
+      "Rainfall": "Moderate; prefers dry conditions during ripening",
+      "Growth Period": "Perennial; yields 2-3 years after planting grafted vines",
+      "Optimal pH": "6.5-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "Moderate; excess nitrogen can lead to excessive foliage growth",
+      "phosphorus": "Important for root development; ensure adequate levels",
+      "potassium": "High; essential for fruit quality",
+      "ph": "6.5-7.0"
+    },
+    "description": "Grapes require a temperate climate with a distinct winter dormancy period. They grow best in deep, well-drained loamy soils with good fertility. Proper pruning and canopy management are crucial for high-quality fruit production. "
+  },
+  "kinnow": {
+    "image": "https://www.thestatesman.com/wp-content/uploads/2017/11/kinnow.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25-30°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; well-distributed throughout the year",
+      "Growth Period": "Perennial; starts yielding 3-4 years after planting",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "Moderate; supports vigorous growth",
+      "phosphorus": "Adequate levels; supports flowering and fruiting",
+      "potassium": "Balanced nutrients required",
+      "ph": "6.0-7.5"
+    },
+    "description": "Kinnow is a high-yielding mandarin variety that thrives in subtropical regions. It prefers deep, well-drained soils with good organic matter content. Regular irrigation and proper canopy management are essential for optimal fruit quality. "
+  },
+  "peas": {
+    "image": "https://www.thespruce.com/thmb/5HmAm18irYlJJyr2qxN2WThHLwk=/5750x3834/filters:no_upscale():max_bytes(150000):strip_icc()/garden-vs-snow-and-sugar-snap-1403487-01-75756cadab74407c8d2db846f2f5ed8e.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 18-24°C; cool-season crop",
+      "Rainfall": "Requires moderate rainfall; sensitive to waterlogging",
+      "Growth Period": "Annual; yields 2-3 months after planting",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "Low; peas fix atmospheric nitrogen",
+      "phosphorus": "Important for root development; ensure adequate levels",
+      "potassium": "Moderate; supports overall plant health",
+      "ph": "6.0-7.0"
+    },
+    "description": "Peas are cool-season legumes that grow best in fertile, well-drained soils. They benefit from crop rotation and can improve soil nitrogen levels for subsequent crops. "
+  },
+  "apple": {
+    "image": "https://www.plants-wallpapers.com/plant/trees-apples-apple-orchard.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 15-24°C; requires chilling hours for dormancy",
+      "Rainfall": "Requires moderate rainfall; well-distributed throughout the year",
+      "Growth Period": "Perennial; starts yielding 4-5 years after planting",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "Moderate; supports tree growth and fruiting",
+      "phosphorus": "Essential for root and flower development",
+      "potassium": "High; crucial for fruit quality",
+      "ph": "6.0-7.0"
+    },
+    "description": "Apples are temperate fruits that require a period of winter chill to produce quality fruit. They grow best in deep, well-drained soils with good organic matter. Proper pruning and thinning are important for high yields. "
+  },
+  "orange": {
+    "image": "https://cdn.britannica.com/67/174567-050-6C41DBC7/Grove-orange-trees-region-Costa-Blanca-Spain.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25-29°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; well-distributed throughout the year",
+      "Growth Period": "Perennial; starts yielding 3-4 years after planting",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "Moderate; supports tree growth and fruiting",
+      "phosphorus": "Important for root and flower development",
+      "potassium": "High; essential for fruit quality",
+      "ph": "6.5-7.5"
+    },
+    "description": "Oranges are subtropical fruits that require well-drained, fertile soils. They benefit from regular irrigation and proper canopy management to achieve optimal fruit quality. "
+  },
+  "pomegranate": {
+    "image": "https://www.thespruce.com/thmb/IIEDV6wQrV8FSHfKvBfOhOBIre4=/4208x0/filters:no_upscale():max_bytes(150000):strip_icc()/pomegranate-growing-tips-3269232-hero-f9849529ed6644168d8dc22232e857c2.jpg",
+    "growingConditions": {
+      "Temperature": "Thrives in hot, arid climates; optimal between 38-40°C",
+      "Rainfall": "Requires low to moderate rainfall; drought-tolerant once established",
+      "GrowthPeriod": "Perennial; starts yielding in the third year after planting",
+      "OptimalpH": "5.5-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth",
+      "Phosphorus": "Adequate levels; essential for root development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "5.5-7.0"
+    },
+    "description": "Pomegranate is a drought-tolerant fruit that grows best in arid regions. It prefers sandy loam soils with good drainage and a slightly acidic to neutral pH. Regular pruning helps maintain plant health and fruit quality."
+  },
+  "sapota": {
+    "image": "https://4.imimg.com/data4/PS/FV/ANDROID-55959384/product.jpeg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25-35°C; sensitive to frost",
+      "Rainfall": "Requires high rainfall; prefers humid conditions",
+      "GrowthPeriod": "Perennial; starts yielding in the fifth year after planting",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "High; supports vigorous growth and fruiting",
+      "Phosphorus": "Moderate; essential for root development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.5"
+    },
+    "description": "Sapota, also known as chikoo, is a tropical fruit that grows best in well-drained, fertile soils with a slightly acidic to neutral pH. It benefits from regular watering and warm temperatures."
+  },
+  "mushrooms": {
+    "image": "https://www.worldatlas.com/r/w2000-h1125-q90/upload/f2/39/71/shutterstock-508167682.jpg",
+    "growingConditions": {
+      "Temperature": "Varies by species; typically 15-25°C",
+      "Rainfall": "Requires high humidity; misting may be necessary",
+      "GrowthPeriod": "Depends on species; generally 2-3 months from inoculation to harvest",
+      "OptimalpH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "High; supports mycelial growth",
+      "Phosphorus": "Moderate; essential for fruiting body development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "5.5-6.5"
+    },
+    "description": "Mushrooms are cultivated on organic substrates like straw or sawdust. They require a controlled environment with high humidity and specific temperature ranges, varying by species."
+  },
+  "sweetLime": {
+    "image": "https://cdn.mos.cms.futurecdn.net/7DDVPUy6BU2ZjRpeSQCkDX-1536-80.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25-30°C; tolerates up to 40°C",
+      "Rainfall": "Requires moderate rainfall; well-distributed throughout the year",
+      "GrowthPeriod": "Perennial; starts yielding in the second year after planting",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports tree growth",
+      "Phosphorus": "Adequate levels; essential for flowering and fruiting",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.5"
+    },
+    "description": "Sweet lime, also known as sweet lemon, is a citrus fruit that grows best in deep, well-drained soils with a slightly acidic to neutral pH. Regular irrigation and warm temperatures are beneficial."
+  },
+  "pineapple": {
+    "image": "https://www.shared.com/content/images/2019/07/GettyImages-674744683-1.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 22-32°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; prefers humid conditions",
+      "GrowthPeriod": "Perennial; starts yielding in the second year after planting",
+      "OptimalpH": "4.5-6.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports plant growth",
+      "Phosphorus": "High; essential for fruit development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "4.5-6.5"
+    },
+    "description": "Pineapple is a tropical fruit that grows best in sandy loam soils with good drainage and a slightly acidic pH. It benefits from regular watering and warm temperatures."
+  },
+  "guava": {
+    "image": "https://cdn.mos.cms.futurecdn.net/QaRdBRkYSYoekzPrKViCiC.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 23-28°C; tolerates up to 40°C",
+      "Rainfall": "Requires moderate rainfall; drought-tolerant once established",
+      "GrowthPeriod": "Perennial; starts yielding in the second year after planting",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth",
+      "Phosphorus": "Adequate levels; essential for root development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.5"
+    },
+    "description": "Guava is a tropical fruit that grows best in well-drained, fertile soils with a slightly acidic to neutral pH. It benefits from regular watering and warm temperatures."
+  },
+  "turnip": {
+    "image": "https://a-z-animals.com/media/2022/09/Shutterstock_1646722468-1.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 10-20°C; cool-season crop",
+      "Rainfall": "Requires moderate rainfall; sensitive to waterlogging",
+      "GrowthPeriod": "Annual; typically ready for harvest within 60-90 days",
+      "OptimalpH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports root development",
+      "Phosphorus": "Adequate levels; essential for root growth",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.0"
+    },
+    "description": "Turnips are cool-season root vegetables that grow best in fertile, well-drained soils with a slightly acidic to neutral pH. They benefit from regular watering and can tolerate light frosts."
+  },
+  "squash": {
+    "image": "https://i0.wp.com/urban-gardening-ideas.com/wp-content/uploads/2016/05/Squash-zucchini-on-plant1.jpg?fit=900%2C598&ssl=1",
+    "growingConditions": {
+      "Temperature": "Optimal between 20-30°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils",
+      "GrowthPeriod": "Annual; typically ready for harvest within 50-70 days",
+      "OptimalpH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports plant growth",
+      "Phosphorus": "High; essential for fruit development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "5.5-6.5"
+    },
+    "description": "Squash is a warm-season crop belonging to the Cucurbitaceae family. It is rich in Vitamin A, calcium, and phosphorus. It can be grown in various soils ranging from sandy loam to loamy soil, with an optimal pH of 5.5-6.5. Varieties like 'Punjab Chappan Kadoo-1' are early-maturing, ready for harvest in about 60 days after sowing. "
+  },
+  "beans": {
+    "image": "https://cdn.mos.cms.futurecdn.net/fCR9Cnq5MMHxraC6PWGYW6-1536-80.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 18-30°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; well-distributed throughout the growing season",
+      "GrowthPeriod": "Annual; typically ready for harvest within 50-100 days, depending on variety",
+      "OptimalpH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; beans fix atmospheric nitrogen, reducing the need for additional nitrogen fertilizers",
+      "Phosphorus": "Important for root development; ensure adequate levels",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.0"
+    },
+    "description": "Beans are rich in fiber, protein, and minerals, making them beneficial for heart health. They are typically sown in February-March and harvested in 55-65 days. Beans thrive in full sunlight and can be grown in various soil types. "
+  },
+  "beetroot": {
+    "image": "https://plantura.garden/uk/wp-content/uploads/sites/2/2022/08/beetroot-in-ground-1024x679.jpg?x96810",
+    "growingConditions": {
+      "Temperature": "Optimal between 10-20°C; cool-season crop",
+      "Rainfall": "Requires moderate rainfall; sensitive to waterlogging",
+      "GrowthPeriod": "Annual; typically ready for harvest within 90-120 days",
+      "OptimalpH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports root development",
+      "Phosphorus": "Adequate levels; essential for healthy growth",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.0"
+    },
+    "description": "Beetroot is a root vegetable that grows best in fertile, well-drained soils with a slightly acidic to neutral pH. It benefits from regular watering and cooler temperatures. Beetroot is typically ready for harvest in 90-120 days. "
+  },
+  "chillycapsicum": {
+    "image": "https://im01.itaiwantrade.com/74cd7200-5bce-40be-8143-1b60ad9820d3/ASVEG_No._2.JPG",
+    "growingConditions": {
+      "Temperature": "Optimal between 18-28°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils",
+      "GrowthPeriod": "Annual; typically ready for harvest within 85-95 days",
+      "OptimalpH": "5.8-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports plant growth",
+      "Phosphorus": "High; essential for flowering and fruiting",
+      "Potassium": "Balanced nutrients required",
+      "pH": "5.8-7.0"
+    },
+    "description": "Chili peppers, also known as capsicum, add spiciness to dishes and are rich in vitamins A and C. They are typically sown in February-March and harvested in 85-95 days. Chili plants thrive in full sunlight and well-drained soils. "
+  },
+  "greenavare": {
+    "image": "https://gardenerspath.com/wp-content/uploads/2020/03/Close-Up-of-Hyacinth-Beans-on-the-Vine.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25-35°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils",
+      "GrowthPeriod": "Annual; typically ready for harvest within 50-100 days, depending on variety",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth",
+      "Phosphorus": "Adequate levels; essential for root development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.5"
+    },
+    "description": "Green avare, also known as hyacinth bean, is a leguminous plant cultivated for its edible beans and pods. It is typically sown in February-March and harvested in 50-100 days. The plant thrives in full sunlight and various soil types. "
+  },
+  "seemebadnekai": {
+    "image": "https://i.pinimg.com/originals/6d/83/8a/6d838a716deba7e6c83c625e405bcd5d.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25-35°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils",
+      "GrowthPeriod": "Annual; typically ready for harvest within 60-90 days",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth",
+      "Phosphorus": "Adequate levels; essential for root development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.5"
+    },
+    "description": "Seemebadnekai, also known as ridge gourd, is a tropical vegetable that grows best in fertile, well-drained soils with a slightly acidic to neutral pH. It benefits from regular watering and warm temperatures."
+  },
+  "snakeguard": {
+    "image": "https://www.onlyfoods.net/wp-content/uploads/2017/03/Snake-Gourd-Pictures.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25-35°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils",
+      "GrowthPeriod": "Annual; typically ready for harvest within 60-90 days",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth",
+      "Phosphorus": "Adequate levels; essential for root development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.5"
+    },
+    "description": "Snakeguard, also known as snake gourd, is a tropical vegetable that grows best in fertile, well-drained soils with a slightly acidic to neutral pH. It benefits from regular watering and warm temperatures."
+  },
+  "suvarnagadde": {
+    "image": "https://img3.exportersindia.com/product_images/bc-full/dir_133/3961379/elephant-yam-2321574.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25-35°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils",
+      "GrowthPeriod": "Annual; typically ready for harvest within 60-90 days",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth",
+      "Phosphorus": "Adequate levels; essential for root development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.5"
+    },
+    "description": "Suvarna Gadde, also known as pointed gourd, is a tropical vegetable that grows best in fertile, well-drained soils with a slightly acidic to neutral pH. It benefits from regular watering and warm temperatures."
+  },
+  "watermelon": {
+    "image": "https://positivebloom.com/wp-content/uploads/2022/06/striped-watermelon-on-the-field-during-ripening.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25-35°C; sensitive to frost",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils",
+      "GrowthPeriod": "Annual; typically ready for harvest within 70-90 days",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth",
+      "Phosphorus": "Adequate levels; essential for root development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "6.0-7.5"
+    },
+    "description": "Watermelon is a warm-season fruit that grows best in sandy loam soils with good drainage and a slightly acidic to neutral pH. It benefits from regular watering and full sun exposure."
+  },
+  "copra": {
+    "image": "https://ptindomalabar.com/wp-content/uploads/2019/03/copra2-1024x652.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 27-30°C; sensitive to frost",
+      "Rainfall": "Requires high rainfall; prefers humid conditions",
+      "GrowthPeriod": "Perennial; starts yielding in the sixth to seventh year after planting",
+      "OptimalpH": "5.0-6.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "High; supports vigorous growth",
+      "Phosphorus": "Moderate; essential for root development",
+      "Potassium": "Balanced nutrients required",
+      "pH": "5.0-6.5"
+    },
+    "description": "Copra is the dried meat of the coconut, primarily produced from mature coconuts harvested from coconut palms. The process involves drying the coconut meat to produce copra, which is then used to extract coconut oil."
+  },
+  "amorphophallus": {
+    "image": "https://plantlet.org/wp-content/uploads/2021/07/morning-after3711x1920-23c5bpx.jpg",
+    "growingConditions": {
+      "Temperature": "Thrives in warm environments with temperatures between 20°C to 30°C (68°F to 86°F).",
+      "Rainfall": "Prefers high humidity and regular watering, but sensitive to overwatering; requires well-drained soil.",
+      "GrowthPeriod": "Perennial; growth cycle includes a dormancy period; active growth phases vary by species.",
+      "OptimalpH": "Prefers slightly acidic to neutral soil pH levels."
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy foliage development.",
+      "Phosphorus": "High; essential for tuber development.",
+      "Potassium": "Balanced nutrients required for overall plant health.",
+      "pH": "Slightly acidic to neutral (pH 6.0-7.0)."
+    },
+    "description": "Amorphophallus is a genus of flowering plants known for their unique and often large inflorescences. They grow best in fertile, well-drained soils with high organic matter and benefit from regular watering and warm temperatures. Some species have a dormancy period during their growth cycle."
+  },
+  "ashgourd": {
+    "image": "https://slicesoflime.com/wp-content/uploads/2021/05/What-Is-Ash-Gourd-1024x683-1.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25°C to 35°C (77°F to 95°F); sensitive to frost.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Annual; typically ready for harvest within 90-120 days.",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy vine growth.",
+      "Phosphorus": "Adequate levels; essential for fruit development.",
+      "Potassium": "Balanced nutrients required.",
+      "pH": "6.0-7.5"
+    },
+    "description": "Ash gourd, also known as winter melon, is a vine grown for its edible fruit. It thrives in warm climates with moderate rainfall and well-drained soils. The fruit is commonly used in various culinary dishes and traditional medicines."
+  },
+  "coconutoil": {
+    "image": "https://www.naturalhealthyliving.net/wp-content/uploads/2014/04/coconut-oil.jpg",
+    "growingConditions": {
+      "Temperature": "Coconut palms thrive in tropical climates with temperatures between 27°C to 30°C (81°F to 86°F).",
+      "Rainfall": "Require high rainfall; prefer humid conditions.",
+      "GrowthPeriod": "Perennial; starts yielding in the sixth to seventh year after planting.",
+      "OptimalpH": "5.0-6.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "High; supports vigorous growth.",
+      "Phosphorus": "Moderate; essential for root development.",
+      "Potassium": "Balanced nutrients required.",
+      "pH": "5.0-6.5"
+    },
+    "description": "Coconut oil is extracted from the meat of mature coconuts harvested from coconut palms. The process involves drying the coconut meat to produce copra, which is then used to extract coconut oil. The oil has various applications in cooking, cosmetics, and traditional medicine."
+  },
+  "rubber": {
+    "image": "https://facts.net/wp-content/uploads/2023/12/11-facts-about-rubber-1701789846.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25°C to 35°C (77°F to 95°F); sensitive to frost.",
+      "Rainfall": "Requires high rainfall; prefers humid conditions.",
+      "GrowthPeriod": "Perennial; starts yielding latex in the seventh to eighth year after planting.",
+      "OptimalpH": "4.5-6.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "Balanced nutrients required.",
+      "pH": "4.5-6.5"
+    },
+    "description": "Rubber is obtained from the latex of the rubber tree (Hevea brasiliensis). The trees are cultivated in tropical regions with high rainfall and temperatures. The latex is harvested and processed to produce natural rubber, which has various industrial applications."
+  },
+  "cashewnuts": {
+    "image": "https://n3.sdlcdn.com/imgs/i/h/w/Seeds-village-Cashew-Nut-Seeds-SDL271956889-1-a6c76.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 24°C to 28°C (75°F to 82°F); sensitive to frost.",
+      "Rainfall": "Requires moderate rainfall; well-distributed throughout the growing season.",
+      "GrowthPeriod": "Perennial; starts yielding in the third to fourth year after planting.",
+      "OptimalpH": "5.5-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "Balanced nutrients required.",
+      "pH": "5.5-7.0"
+    },
+    "description": "Cashew nuts are the seeds of the cashew apple, produced by the cashew tree (Anacardium occidentale). The trees grow best in well-drained sandy or sandy loam soils and a warm, humid climate. Cashew cultivation is prominent in tropical regions, providing both nuts for consumption and cashew apples for juice production."
+  },
+  "peppergarbled": {
+    "image": "https://desolutionsexports.com/wp-content/uploads/2023/10/Mala-Garbled-pepper-scaled.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25°C to 30°C; sensitive to frost.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Perennial; starts yielding in the second to third year after planting.",
+      "OptimalpH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "High; supports vigorous growth and fruiting.",
+      "Phosphorus": "Moderate; essential for root development.",
+      "Potassium": "Balanced nutrients required for overall plant health.",
+      "pH": "5.5-6.5"
+    },
+    "description": "Peppergarbled, also known as black pepper (Piper nigrum), is a flowering vine cultivated for its peppercorns, used as a spice and seasoning. It thrives in tropical climates with high humidity and well-drained soils."
+  },
+  "coconuteed": {
+    "image": "https://static.vecteezy.com/system/resources/previews/011/991/195/large_2x/coconut-seed-for-sale-free-photo.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 27°C to 30°C; sensitive to frost.",
+      "Rainfall": "Requires high rainfall; prefers humid conditions.",
+      "GrowthPeriod": "Perennial; starts yielding in the sixth to seventh year after planting.",
+      "OptimalpH": "5.0-6.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "High; supports vigorous growth.",
+      "Phosphorus": "Moderate; essential for root development.",
+      "Potassium": "Balanced nutrients required for overall plant health.",
+      "pH": "5.0-6.5"
+    },
+    "description": "Coconut palms (Cocos nucifera) produce coconuts, which contain seeds used for oil extraction, consumption, and propagation. They thrive in tropical coastal regions with sandy, well-drained soils."
+  },
+  "longmelon": {
+    "image": "https://img.freepik.com/premium-photo/green-winter-melon-squash-wax-gourd-is-ivy-plant-is-trellis-hanging-vegetable-gardenbio-food-green-squash-are-ready-harvest-from-agriculture-organic-farm-sell-market_483511-6162.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25°C to 35°C; sensitive to frost.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Annual; typically ready for harvest within 80-100 days.",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy vine growth.",
+      "Phosphorus": "Adequate levels; essential for fruit development.",
+      "Potassium": "Balanced nutrients required for optimal fruit quality.",
+      "pH": "6.0-7.5"
+    },
+    "description": "Long melon, also known as snake melon or Armenian cucumber, is a refreshing fruit commonly used in salads and culinary dishes. It grows best in warm climates with ample sunlight and well-drained soils."
+  },
+  "tapioca": {
+    "image": "https://cdn.mos.cms.futurecdn.net/kRqwjJiWyETykC63GRe2kh.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25°C to 35°C; sensitive to frost.",
+      "Rainfall": "Requires high rainfall; prefers humid conditions.",
+      "GrowthPeriod": "Perennial; starts yielding in the second year after planting.",
+      "OptimalpH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy root development.",
+      "Phosphorus": "High; essential for tuber growth.",
+      "Potassium": "Balanced nutrients required for overall plant health.",
+      "pH": "5.5-6.5"
+    },
+    "description": "Tapioca, derived from the cassava plant (Manihot esculenta), is a starchy root crop widely cultivated for its edible tubers, which are processed into tapioca pearls, flour, and other products."
+  },
+  "turmeric": {
+    "image": "https://www.garden-lovers.net/wp-content/uploads/2021/04/Ginger-Turmeric2_2048x.progressive.png.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 20°C to 30°C; sensitive to frost.",
+      "Rainfall": "Requires high rainfall; prefers humid conditions.",
+      "GrowthPeriod": "Perennial; typically harvested after 8-10 months of planting.",
+      "OptimalpH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy foliage growth.",
+      "Phosphorus": "High; essential for rhizome development.",
+      "Potassium": "Balanced nutrients required for overall plant health.",
+      "pH": "5.5-6.5"
+    },
+    "description": "Turmeric (Curcuma longa) is a flowering plant of the ginger family, cultivated for its rhizomes, which are used as a spice and in traditional medicine. It thrives in tropical climates with well-drained, fertile soils."
+  },
+  "mango": {
+    "image": "https://www.lovethegarden.com/sites/default/files/content/articles/uk/mango-fruit-ready-for-harvesting.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 24°C to 30°C; sensitive to frost.",
+      "Rainfall": "Requires moderate to high rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Perennial; starts yielding in the third to fifth year after planting.",
+      "OptimalpH": "5.5-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth and fruiting.",
+      "Phosphorus": "Adequate levels; essential for root and flower development.",
+      "Potassium": "Balanced nutrients required for fruit quality.",
+      "pH": "5.5-7.5"
+    },
+    "description": "Mango (Mangifera indica) is a tropical stone fruit known for its sweet and juicy flavor. It grows best in tropical and subtropical climates with full sun exposure and well-drained, fertile soils."
+  },
+  "amla": {
+    "image": "https://housing.com/news/wp-content/uploads/2023/01/Amla-trees-compressed.jpg",
+    "growingConditions": {
+      "Temperature": "Thrives in tropical and subtropical climates with temperatures between 25°C to 35°C.",
+      "Rainfall": "Prefers moderate rainfall; well-distributed throughout the year.",
+      "GrowthPeriod": "Deciduous tree; starts yielding fruits in the third to fourth year after planting.",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy foliage development.",
+      "Phosphorus": "Adequate levels; essential for root and fruit development.",
+      "Potassium": "Balanced nutrients required for overall plant health.",
+      "pH": "6.0-7.5"
+    },
+    "description": "Amla, also known as Indian gooseberry (Phyllanthus emblica), is a deciduous tree native to India. Its fruits are rich in vitamin C and are used in various culinary and medicinal applications."
+  },
+  "dusterbeans": {
+    "image": "https://media.gettyimages.com/id/1413587438/photo/cultivated-field-of-sorghum-close-up.jpg?s=612x612&w=gi&k=20&c=z4qwYMrtrKoXRF5_T8UfC_geTuxwzIvr3rlvIa6MK2I=",
+    "growingConditions": {
+      "Temperature": "Optimal between 20°C to 30°C; sensitive to frost.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Annual; typically ready for harvest within 90-120 days.",
+      "OptimalpH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "Balanced nutrients required.",
+      "pH": "6.0-7.0"
+    },
+    "description": "Duster beans, also known as field beans, are leguminous plants cultivated for their edible seeds. They are commonly used in various cuisines and are known for their high protein content."
+  },
+  "soyabean": {
+    "image": "https://kj1bcdn.b-cdn.net/media/37978/soybean-1.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 20°C to 30°C; sensitive to frost.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Annual; typically ready for harvest within 120-150 days.",
+      "OptimalpH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "Balanced nutrients required.",
+      "pH": "6.0-7.0"
+    },
+    "description": "Soyabean, or soybean (Glycine max), is a leguminous crop native to East Asia. It is widely cultivated for its edible bean, which has numerous uses in food and industry."
+  },
+  "linseed": {
+    "image": "https://thumbs.dreamstime.com/b/organic-linseed-seeds-linum-usitatissimum-flax-spoon-plants-natural-wood-background-156814205.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 15°C to 20°C; cool-season crop.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Annual; typically ready for harvest within 90-110 days.",
+      "OptimalpH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "Balanced nutrients required.",
+      "pH": "6.0-7.0"
+    },
+    "description": "Linseed, also known as flaxseed (Linum usitatissimum), is cultivated for its seeds, which are used in food, oil production, and as a source of fiber."
+  },
+  "nigerseed": {
+    "image": "https://www.feedipedia.org/sites/default/files/images/niger_crop_fotoculus.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 20°C to 30°C; sensitive to frost.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Annual; typically ready for harvest within 90-100 days.",
+      "OptimalpH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "Balanced nutrients required.",
+      "pH": "6.0-7.0"
+    },
+    "description": "Niger seed, also known as ramtil (Guizotia abyssinica), is cultivated for its small, black seeds, which are used for oil extraction and as bird feed."
+  },
+  "moongdal": {
+    "image": "https://images.news18.com/ibnlive/uploads/2022/06/moong-cultivation-165432919016x9.png",
+    "growingConditions": {
+      "Temperature": "Optimal between 25°C to 35°C; sensitive to frost.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Annual; typically ready for harvest within 60-90 days.",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "Balanced nutrients required.",
+      "pH": "6.0-7.5"
+    },
+    "description": "Moong dal, derived from green gram (Vigna radiata), is a pulse widely consumed in South Asia. The seeds are rich in protein and are used in various culinary dishes."
+  },
+  "lime": {
+    "image": "https://cdn.mos.cms.futurecdn.net/6RA7a9ZSk94vKUhMLk9XTR.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25°C to 30°C; sensitive to frost.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Perennial; typically fruits within 2-3 years.",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "High requirement for fruit development.",
+      "pH": "6.0-7.5"
+    },
+    "description": "Lime (Citrus aurantiifolia) is a citrus fruit known for its acidic juice and aromatic zest. It's widely used in culinary applications and beverages."
+  },
+  "muskmelon": {
+    "image": "https://gardenerspath.com/wp-content/uploads/2022/05/Muskmelons-Growing-in-a-Greenhouse.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 25°C to 35°C; warm-season crop.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Annual; typically ready for harvest within 70-90 days.",
+      "OptimalpH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "High requirement for fruit development.",
+      "pH": "6.0-7.0"
+    },
+    "description": "Musk melon (Cucumis melo) is a sweet, aromatic fruit with a netted rind and orange flesh. It's rich in vitamins and commonly consumed fresh."
+  },
+  "pear": {
+    "image": "https://cdn.pixabay.com/photo/2022/04/04/11/14/pear-7110937_1280.jpg",
+    "growingConditions": {
+      "Temperature": "Optimal between 15°C to 25°C; requires winter chilling.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Perennial; typically fruits within 3-5 years.",
+      "OptimalpH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "High requirement for fruit development.",
+      "pH": "6.0-7.0"
+    },
+    "description": "Pear (Pyrus communis) is a sweet, juicy fruit with a characteristic shape and texture. It's consumed fresh and used in various culinary preparations."
+  },
+  "rajgir": {
+    "image": "",
+    "growingConditions": {
+      "Temperature": "Optimal between 20°C to 30°C; warm-season crop.",
+      "Rainfall": "Requires moderate rainfall; prefers well-drained soils.",
+      "GrowthPeriod": "Annual; typically ready for harvest within 90-120 days.",
+      "OptimalpH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "Nitrogen": "Moderate; supports healthy growth.",
+      "Phosphorus": "Adequate levels; essential for root development.",
+      "Potassium": "Balanced nutrients required.",
+      "pH": "6.0-7.5"
+    },
+    "description": "Rajgir (Amaranthus) is a nutritious grain crop known for its high protein content and gluten-free properties. It's used in various traditional dishes."
+  },
+  "sweetpumpkin": {
+    "image": "https://etc.usf.edu/clippix/pix/sweet-lightning-pumpkins-2_medium.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-6.8"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-6.8"
+    },
+    "description": "Sweet pumpkin varieties are grown for their sweet, dense flesh. They thrive in warm conditions and require well-drained, fertile soil."
+  },
+  "horsegram": {
+    "image": "https://healthcautions.com/wp-content/uploads/2018/09/horse-gram-1.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "120-150 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Horse gram is a drought-resistant legume crop high in protein and iron. It's well-suited to rainfed conditions."
+  },
+  "ragi": {
+    "image": "https://etimg.etb2bimg.com/thumb/msid-111180947,imgsize-216550,width-1200,height=765,overlay-etgovernment/blog/ensuring-food-nutrition-security-water-smart-ragi-farming-in-jharkhand-transforming-agri-food-system.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "500-900mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "40-60 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "25-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Ragi (finger millet) is a nutritious cereal crop that's drought-tolerant and rich in calcium and minerals."
+  },
+  "chanadal": {
+    "image": "https://static.toiimg.com/photo/97007626.cms",
+    "growingConditions": {
+      "Temperature": "20-25°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "95-110 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Chana dal (split chickpeas) comes from chickpea plants. The crop requires moderate temperatures and well-drained soils."
+  },
+  "betalleaves": {
+    "image": "https://cdn2.stylecraze.com/wp-content/uploads/2014/11/Betel-Leaf-In-Detail.jpg",
+    "growingConditions": {
+      "Temperature": "15-40°C",
+      "Rainfall": "1800-2500mm",
+      "Growth Period": "Perennial, harvest starts 6 months after planting",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-150 kg/ha",
+      "phosphorus": "50-75 kg/ha",
+      "potassium": "50-75 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Betel is a perennial vine requiring high humidity and shade. Leaves are harvested regularly for traditional uses."
+  },
+  "brokenrice": {
+    "image": "https://bhandarifoods.com/wp-content/uploads/2023/06/1121-Steam.jpg",
+    "growingConditions": {
+      "Temperature": "Processing temperature 20-30°C",
+      "Rainfall": "N/A (Processed product)",
+      "Growth Period": "2-3 hours processing time",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "N/A (Processed from rice)",
+      "phosphorus": "N/A",
+      "potassium": "N/A",
+      "ph": "N/A"
+    },
+    "description": "Broken rice is a processed product from rice milling. It's a byproduct of rice processing rather than a crop."
+  },
+  "tendercoconut": {
+    "image": "https://5.imimg.com/data5/SELLER/Default/2022/3/UQ/VM/AC/99407497/tender-coconut-1000x1000.png",
+    "growingConditions": {
+      "Temperature": "27-35°C",
+      "Rainfall": "1500-2500mm",
+      "Growth Period": "6-8 months for tender nuts",
+      "Optimal pH": "5.5-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-150 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "5.5-7.0"
+    },
+    "description": "Tender coconuts are harvested young from coconut palms, containing sweet water and soft meat."
+  },
+  "turdal": {
+    "image": "https://kj1bcdn.b-cdn.net/media/41980/toor-dal.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "150-180 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Tur dal (pigeon pea) is a drought-tolerant legume that improves soil fertility through nitrogen fixation."
+  },
+  "urddal": {
+    "image": "https://i.ytimg.com/vi/ctoxpEvgXWk/maxresdefault.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "600-800mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Urad dal (black gram) is rich in protein and minerals, commonly used in South Asian cuisine."
+  },
+  "jaggery": {
+    "image": "https://images.fwdlife.in/2020/03/HEALTH-BENEFITS-OF-JAGGERY-1000x600.jpg",
+    "growingConditions": {
+      "Temperature": "Processing temperature 100-120°C",
+      "Rainfall": "N/A (Processed product)",
+      "Growth Period": "4-6 hours processing time",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "N/A (Processed from sugarcane)",
+      "phosphorus": "N/A",
+      "potassium": "N/A",
+      "ph": "N/A"
+    },
+    "description": "Jaggery is a traditional non-centrifugal cane sugar product made by processing sugarcane juice."
+  },
+  "mustardoil": {
+    "image": "https://imgk.timesnownews.com/story/mustard-oil.gif",
+    "growingConditions": {
+      "Temperature": "Processing temperature 20-25°C",
+      "Rainfall": "N/A (Processed product)",
+      "Growth Period": "2-3 days processing time",
+      "Optimal pH": "N/A"
+    },
+    "soilRequirements": {
+      "nitrogen": "N/A (Processed from mustard seeds)",
+      "phosphorus": "N/A",
+      "potassium": "N/A",
+      "ph": "N/A"
+    },
+    "description": "Mustard oil is extracted from mustard seeds through pressing or solvent extraction methods."
+  },
+  "sesamum": {
+    "image": "https://assessment.ifas.ufl.edu/site/assets/files/24272/flower_of_sesamum_indicum.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "500-650mm",
+      "Growth Period": "80-120 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "30-40 kg/ha",
+      "phosphorus": "20-30 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Sesamum (sesame) is an ancient oilseed crop valued for its high-quality oil and seeds."
+  },
+  "moathdal": {
+    "image": "https://ooofarms.com/cdn/shop/products/MothBean1_whole.jpg?v=1672251298",
+    "growingConditions": {
+      "Temperature": "24-32°C",
+      "Rainfall": "500-700mm",
+      "Growth Period": "75-90 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-25 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Moth dal is a drought-resistant pulse crop adapted to arid and semi-arid regions."
+  },
+  "corrianderseed": {
+    "image": "https://cdn.shopify.com/s/files/1/0536/9517/products/Corriander_Seed.JPG?v=1594928154",
+    "growingConditions": {
+      "Temperature": "15-25°C",
+      "Rainfall": "450-600mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "30-40 kg/ha",
+      "phosphorus": "20-30 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Coriander seeds are harvested from mature coriander plants, used as a spice and in traditional medicine."
+  },
+  "groundnutseed": {
+    "image": "https://cdn.mos.cms.futurecdn.net/BokZq34BsX2uFam6BzpkGQ.jpg",
+    "growingConditions": {
+      "Temperature": "25-30°C",
+      "Rainfall": "500-700mm",
+      "Growth Period": "100-130 days",
+      "Optimal pH": "6.0-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-6.5"
+    },
+    "description": "Groundnut seeds are used for planting and oil extraction, requiring well-drained sandy loam soils."
+  },
+  "taramira": {
+    "image": "https://www.mdpi.com/agriculture/agriculture-08-00055/article_deploy/html/images/agriculture-08-00055-g001.png",
+    "growingConditions": {
+      "Temperature": "15-25°C",
+      "Rainfall": "250-400mm",
+      "Growth Period": "120-150 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "40-50 kg/ha",
+      "phosphorus": "20-30 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Taramira is a drought-resistant oilseed crop suitable for arid regions."
+  },
+  "tobacco": {
+    "image": "https://assets.smokingpipes.com/images/blog/posts/2020-November/TobaccoCuts.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "500-750mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "100-150 kg/ha",
+      "phosphorus": "50-75 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Tobacco is a commercial crop requiring rich, well-drained soils and careful management."
+  },
+  "tamarindfruit": {
+    "image": "https://www.thespruce.com/thmb/35yHeB4N76sJybZqDUmbBjhzJPk=/1999x1500/filters:no_upscale():max_bytes(150000):strip_icc()/Tamarind-GettyImages-122632372-5a1b64d7beba330037b797d8.jpg",
+    "growingConditions": {
+      "Temperature": "20-35°C",
+      "Rainfall": "750-1900mm",
+      "Growth Period": "Perennial, fruits in 7-10 years",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "50-75 kg/ha",
+      "phosphorus": "25-50 kg/ha",
+      "potassium": "50-75 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Tamarind is a long-lived tree producing pods with sweet-sour pulp used in cuisines worldwide."
+  },
+  "cumbu": {
+    "image": "https://agritech.tnau.ac.in/agriculture/CropProduction/Forage%20Crops/forage-images/fodder%20cumbu.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "75-90 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "40-60 kg/ha",
+      "phosphorus": "20-30 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Cumbu (pearl millet) is a drought-resistant cereal crop suitable for arid regions."
+  },
+  "gingellyoil": {
+    "image": "https://www.foodreadme.com/wp-content/uploads/2020/09/Sesame-Oil-768x447.jpg",
+    "growingConditions": {
+      "Temperature": "Processing temp 20-25°C",
+      "Rainfall": "N/A (Processed product)",
+      "Growth Period": "2-3 days processing",
+      "Optimal pH": "N/A"
+    },
+    "soilRequirements": {
+      "nitrogen": "N/A (Processed from sesame)",
+      "phosphorus": "N/A",
+      "potassium": "N/A",
+      "ph": "N/A"
+    },
+    "description": "Gingelly oil (sesame oil) is extracted from sesame seeds, valued for its flavor and medicinal properties."
+  },
+  "varagu": {
+    "image": "https://skyroots.in/wp-content/uploads/2023/02/BLOG23022220.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "30-40 kg/ha",
+      "phosphorus": "20-30 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Varagu (kodo millet) is a hardy cereal crop suitable for marginal soils."
+  },
+  "hybridcumbu": {
+    "image": "https://agritech.tnau.ac.in/agriculture/English%20Version/Agriculture/CropProduction/Forage%20Crops/forage-images/cumbu%20napier.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "70-85 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Hybrid cumbu is an improved variety of pearl millet with higher yield potential."
+  },
+  "karamani": {
+    "image": "https://3.bp.blogspot.com/_GE39CVDDJIU/TCi_oz1xTpI/AAAAAAAABjs/HvI15H0pecQ/s1600/karamani+2.JPG",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "500-750mm",
+      "Growth Period": "90-100 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Karamani (black-eyed pea) is a legume crop that improves soil fertility."
+  },
+  "thinai": {
+    "image": "https://static.sadhguru.org/d/46272/1675696002-thinai-payir.jpg",
+    "growingConditions": {
+      "Temperature": "25-32°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "75-90 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "30-40 kg/ha",
+      "phosphorus": "20-30 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Thinai (foxtail millet) is a nutritious cereal crop adapted to low rainfall conditions."
+  },
+  "barley": {
+    "image": "https://cdn.britannica.com/31/75931-050-FED41F1F/Barley.jpg",
+    "growingConditions": {
+      "Temperature": "15-25°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "30-40 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Barley is a versatile cereal crop used for food, feed, and brewing."
+  },
+  "greenpeas": {
+    "image": "https://images.healthshots.com/healthshots/en/uploads/2021/08/23133154/Peas.jpg",
+    "growingConditions": {
+      "Temperature": "15-20°C",
+      "Rainfall": "400-600mm",
+      "Growth Period": "60-90 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Green peas are cool-season legumes rich in protein and dietary fiber."
+  },
+  "whitepumpkin": {
+    "image": "https://www.liseed.org/ccx3.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-6.8"
+    },
+    "soilRequirements": {
+      "nitrogen": "60-80 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-6.8"
+    },
+    "description": "White pumpkin (ash gourd) is grown for its mild-flavored flesh and medicinal properties."
+  },
+  "plum": {
+    "image": "https://clctreeservices.com/wp-content/uploads/2016/08/Plums_early_morning.jpg",
+    "growingConditions": {
+      "Temperature": "15-25°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "3-5 years to first fruit",
+      "Optimal pH": "6.0-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "40-60 kg/ha",
+      "potassium": "80-100 kg/ha",
+      "ph": "6.0-6.5"
+    },
+    "description": "Plum trees require well-drained soils and moderate climate for optimal fruit production."
+  },
+  "sugar": {
+    "image": "https://morningchores.com/wp-content/uploads/2021/06/sugarcane.jpg",
+    "growingConditions": {
+      "Temperature": "Processing temp 60-85°C",
+      "Rainfall": "N/A (Processed product)",
+      "Growth Period": "24-48 hours processing",
+      "Optimal pH": "N/A"
+    },
+    "soilRequirements": {
+      "nitrogen": "N/A (Processed from sugarcane)",
+      "phosphorus": "N/A",
+      "potassium": "N/A",
+      "ph": "N/A"
+    },
+    "description": "Refined sugar is produced by processing sugarcane or sugar beet juice."
+  },
+  "ghee": {
+    "image": "https://c.ndtvimg.com/2023-03/s9o097a8_ghee_625x300_30_March_23.jpg?im=FaceCrop,algorithm=dnn,width=1200,height=675",
+    "growingConditions": {
+      "Temperature": "Processing temp 110-120°C",
+      "Rainfall": "N/A (Processed product)",
+      "Growth Period": "2-3 hours processing",
+      "Optimal pH": "N/A"
+    },
+    "soilRequirements": {
+      "nitrogen": "N/A (Processed from milk)",
+      "phosphorus": "N/A",
+      "potassium": "N/A",
+      "ph": "N/A"
+    },
+    "description": "Ghee is clarified butter produced by heating butter to remove milk solids."
+  },
+  "amphophalus": {
+    "image": "https://as1.ftcdn.net/v2/jpg/08/56/16/32/1000_F_856163241_BBhZlER9l3FIUsmc0wdStz4UhjIGAVP9.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "1500-2000mm",
+      "Growth Period": "8-10 months",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Amorphophallus is a tropical tuber crop grown for its starchy corms. Requires well-drained, fertile soil and regular watering."
+  },
+  "chickpea": {
+    "image": "https://diygarden.co.uk/wp-content/uploads/2021/05/Chickpeas-Plant.jpg",
+    "growingConditions": {
+      "Temperature": "20-25°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "95-110 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Chickpea is a drought-tolerant pulse crop that fixes nitrogen in soil. Important protein source in many cuisines."
+  },
+  "coffee": {
+    "image": "https://plus.unsplash.com/premium_photo-1666976509887-e33fa169533f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29mZmVlJTIwcGxhbnR8ZW58MHx8MHx8fDA%3D",
+    "growingConditions": {
+      "Temperature": "15-28°C",
+      "Rainfall": "1500-2500mm",
+      "Growth Period": "3-4 years to first harvest",
+      "Optimal pH": "6.0-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "200-250 kg/ha",
+      "phosphorus": "50-75 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "6.0-6.5"
+    },
+    "description": "Coffee is a perennial crop grown for its beans. Requires shade, well-drained soils, and specific altitude conditions."
+  },
+  "elephantyam": {
+    "image": "https://as1.ftcdn.net/v2/jpg/03/57/47/38/1000_F_357473866_5txsGmJVZ2b3ttZG2Ah8pDTeZ1QLqSZm.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "1500-2000mm",
+      "Growth Period": "8-10 months",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Elephant yam is a tropical tuber crop with large corms. Thrives in humid conditions and requires well-drained, fertile soil."
+  },
+  "fish": {
+    "image": "https://sakyfoods.com/wp-content/uploads/2022/12/rohu-fish-Who-round-scaled.jpg",
+    "growingConditions": {
+      "Temperature": "Water temp 20-30°C",
+      "Rainfall": "N/A (Aquaculture)",
+      "Growth Period": "Varies by species (4-8 months)",
+      "Optimal pH": "6.5-8.5 (water)"
+    },
+    "soilRequirements": {
+      "nitrogen": "N/A (Aquaculture)",
+      "phosphorus": "N/A",
+      "potassium": "N/A",
+      "ph": "N/A"
+    },
+    "description": "Fish farming requires controlled water conditions, proper feeding, and water quality management."
+  },
+  "kidneybeans": {
+    "image": "https://www.westernharvestbean.com/wp-content/uploads/2022/05/volodymyr-hryshchenko-LzHdxEBw1Xk-unsplash-scaled.jpg",
+    "growingConditions": {
+      "Temperature": "20-25°C",
+      "Rainfall": "600-900mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Kidney beans are warm-season legumes that fix nitrogen in soil. Require well-drained, fertile soil."
+  },
+  "maidaatta": {
+    "image": "https://www.kantipurhealth.com/wp-content/uploads/2022/11/maida-1.jpg",
+    "growingConditions": {
+      "Temperature": "Processing temp 20-25°C",
+      "Rainfall": "N/A (Processed product)",
+      "Growth Period": "1-2 hours processing",
+      "Optimal pH": "N/A"
+    },
+    "soilRequirements": {
+      "nitrogen": "N/A (Processed from wheat)",
+      "phosphorus": "N/A",
+      "potassium": "N/A",
+      "ph": "N/A"
+    },
+    "description": "Maida is refined wheat flour produced by milling wheat and removing the bran. Used in making breads and pastries."
+  },
+  "mothbeans": {
+    "image": "https://www.vogueitude.com/wp-content/uploads/2021/05/requirements-to-grow-moth-beans-1568x882.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "500-750mm",
+      "Growth Period": "75-90 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-25 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Moth beans are drought-resistant legumes adapted to arid conditions. Fix nitrogen in soil."
+  },
+  "mungbean": {
+    "image": "https://images.picxy.com/cache/2020/12/18/aa97624a3d68e8626349358b5a6d3519.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "600-800mm",
+      "Growth Period": "60-75 days",
+      "Optimal pH": "6.5-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "20-30 kg/ha",
+      "ph": "6.5-7.5"
+    },
+    "description": "Mung beans are fast-growing legumes rich in protein. Improve soil fertility through nitrogen fixation."
+  },
+  "pigeonpeas": {
+    "image": "https://cdn1.matadornetwork.com/blogs/1/2021/02/Pigeon-peas-1200x854.jpg",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "120-180 days",
+      "Optimal pH": "6.0-7.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.5"
+    },
+    "description": "Pigeon peas are drought-resistant legumes that improve soil fertility. Important protein source in many regions."
+  },
+  "seam": {
+    "image": "",
+    "growingConditions": {
+      "Temperature": "20-30°C",
+      "Rainfall": "600-1000mm",
+      "Growth Period": "90-120 days",
+      "Optimal pH": "6.0-7.0"
+    },
+    "soilRequirements": {
+      "nitrogen": "20-30 kg/ha",
+      "phosphorus": "40-50 kg/ha",
+      "potassium": "30-40 kg/ha",
+      "ph": "6.0-7.0"
+    },
+    "description": "Sem (lablab) is a climbing legume grown for its edible pods and beans. Adapts well to various soil types."
+  },
+  "wheatatta": {
+    "image": "https://static.toiimg.com/photo/77132759.cms",
+    "growingConditions": {
+      "Temperature": "Processing temp 20-25°C",
+      "Rainfall": "N/A (Processed product)",
+      "Growth Period": "1-2 hours processing",
+      "Optimal pH": "N/A"
+    },
+    "soilRequirements": {
+      "nitrogen": "N/A (Processed from wheat)",
+      "phosphorus": "N/A",
+      "potassium": "N/A",
+      "ph": "N/A"
+    },
+    "description": "Wheat atta is whole wheat flour produced by grinding wheat grains. Contains bran and is used for making rotis and chapatis."
+  },
+  "wood": {
+    "image": "https://www.designingbuildings.co.uk/w/images/5/58/Builderswiki1.jpg",
+    "growingConditions": {
+      "Temperature": "Varies by species",
+      "Rainfall": "N/A (Forestry product)",
+      "Growth Period": "Several years to decades",
+      "Optimal pH": "N/A"
+    },
+    "soilRequirements": {
+      "nitrogen": "N/A (Forestry product)",
+      "phosphorus": "N/A",
+      "potassium": "N/A",
+      "ph": "N/A"
+    },
+    "description": "Wood is a natural material harvested from trees. Used for construction, furniture, and other applications."
+  },
+  "elephatyam": {
+    "image": "https://4.bp.blogspot.com/-kbLoXPx81Pk/T9k1sFCKP_I/AAAAAAAADRs/WujbhzUpJtU/s1600/amorphallus2-open.jpg",
+    "growingConditions": {
+      "Temperature": "25-35°C",
+      "Rainfall": "1500-2000mm",
+      "Growth Period": "8-10 months",
+      "Optimal pH": "5.5-6.5"
+    },
+    "soilRequirements": {
+      "nitrogen": "80-100 kg/ha",
+      "phosphorus": "50-60 kg/ha",
+      "potassium": "100-150 kg/ha",
+      "ph": "5.5-6.5"
+    },
+    "description": "Elephant yam is a tropical tuber crop with large corms. Thrives in humid conditions and requires well-drained, fertile soil."
+  }
+}
