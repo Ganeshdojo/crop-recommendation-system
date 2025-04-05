@@ -693,14 +693,18 @@ export const Prediction = () => {
         // Sanitize the result by removing SVG icons
         const sanitizedResult = {
           ...result,
-          growing_conditions: (result.growing_conditions as GrowingCondition[])?.map(condition => ({
-            ...condition,
-            icon: undefined // Remove SVG icon strings
-          })) || [],
-          weather_forecast: (result.weather_forecast as WeatherForecast[])?.map(forecast => ({
-            ...forecast,
-            icon: undefined // Remove SVG icon strings
-          })) || []
+          growing_conditions: Array.isArray(result.growing_conditions) 
+            ? result.growing_conditions.map((condition: GrowingCondition) => ({
+                ...condition,
+                icon: undefined // Remove SVG icon strings
+              }))
+            : [],
+          weather_forecast: Array.isArray(result.weather_forecast)
+            ? result.weather_forecast.map((forecast: WeatherForecast) => ({
+                ...forecast,
+                icon: undefined // Remove SVG icon strings
+              }))
+            : []
         };
 
         // Navigate to results page with sanitized data
